@@ -2,5 +2,4 @@ flask
 gunicorn
 bs4
 datetime
-queue
 threading
