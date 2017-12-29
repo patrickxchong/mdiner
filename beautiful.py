@@ -1,3 +1,6 @@
+import time
+starting = time.time()
+
 #import the library used to query a website
 import urllib.request
 
@@ -7,7 +10,6 @@ from bs4 import BeautifulSoup
 import datetime
 
 
-# from:2018-12-31&to:2018-01-01
 def ribscraper(food_,start,numdays):
     output = ""
     date = start.split("-")
@@ -36,13 +38,12 @@ def ribscraper(food_,start,numdays):
         for hall in dining:
             date = i.strftime("%Y-%m-%d")
             dining_day = hall+"?menuDate=" + date
+
             #Query the website and return the html to the variable 'page'
             page = urllib.request.urlopen(dining_day)
+            
             #Parse the html in the 'page' variable, and store it in Beautiful Soup format
             soup = BeautifulSoup(page, "html.parser")
-
-            #big_table=soup.find(id = 'mdining-menu-main')
-            #print (big_table)
 
             food_table=soup.find_all('div', {"class" : 'item-name'})
 
@@ -54,8 +55,9 @@ def ribscraper(food_,start,numdays):
                     output += row.find(text=True) + ": Looks like we have this today! <br>"
                     output += "================================== <br><br>"
     
-    if (len(output) == 0):
+    if (len(output) == (60 + len(food_))):
         output += "Oh noooo what you want isn't on the menu! :("
 
     output += "C'est tout! <br>"
+    output += "Runtime : " + str(time.time()-starting)
     return output

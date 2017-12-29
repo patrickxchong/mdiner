@@ -10,18 +10,16 @@ import datetime
 import threading
 import queue
 
-
 def getUrl(q, url):
-    print('getUrl('+url+') called from a thread.')
+    #print('getUrl('+url+') called from a thread.')
     q.put(BeautifulSoup(urllib.request.urlopen(url), "html.parser"))
 
-def getFood(output_str, soup, food, datelist, dining):
-    print('ok')
 
 def ribscraper(food_,start,numdays):
-    #start = "2017-12-31"
+    
     #food_ = "Ribs"
-    #numdays = 10
+    #start = "2017-01-04"
+    #numdays = 2
     output = ""
     date = start.split("-")
 
@@ -29,7 +27,9 @@ def ribscraper(food_,start,numdays):
     #base = datetime.date(2018, 1, 2)
     datelist = [base + datetime.timedelta(days=x) for x in range(0, int(numdays))]
 
-
+    output += "You're looking for " + food_ + "<br>"
+    output += "Checking " + str(datelist[0].strftime("%Y-%m-%d")) + " to " + str(datelist[-1].strftime("%Y-%m-%d")) + "<br>"
+    
     #specify the url
     mj = "https://dining.umich.edu/menus-locations/dining-halls/mosher-jordan/"
     burs = "https://dining.umich.edu/menus-locations/dining-halls/bursley/"
@@ -73,7 +73,7 @@ def ribscraper(food_,start,numdays):
                     output += row.find(text=True) + ": Looks like we have this today! <br>"
                     output += "================================== <br><br>"
 
-    if (len(output) == 0):
+    if (len(output) == (60 + len(food_))):
         output += "Oh noooo what you want isn't on the menu! :("
 
     output += "C'est tout! <br>"
