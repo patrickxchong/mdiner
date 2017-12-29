@@ -1,5 +1,5 @@
 from flask import Flask, request, redirect
-from beautiful import ribscraper
+from test import ribscraper
 
 app = Flask(__name__)
 

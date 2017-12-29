@@ -1,3 +1,5 @@
+import time
+starting = time.time()
 #import the library used to query a website
 import urllib.request
 
@@ -5,10 +7,21 @@ import urllib.request
 from bs4 import BeautifulSoup
 
 import datetime
+import threading
+import queue
 
 
-# from:2018-12-31&to:2018-01-01
+def getUrl(q, url):
+    print('getUrl('+url+') called from a thread.')
+    q.put(BeautifulSoup(urllib.request.urlopen(url), "html.parser"))
+
+def getFood(output_str, soup, food, datelist, dining):
+    print('ok')
+
 def ribscraper(food_,start,numdays):
+    #start = "2017-12-31"
+    #food_ = "Ribs"
+    #numdays = 10
     output = ""
     date = start.split("-")
 
@@ -29,33 +42,40 @@ def ribscraper(food_,start,numdays):
 
     location = {mj : "Mosher Jordan", burs : "Bursley", eq : "East Quad", nq : "North Quad", sq : "South Quad", mark : "Markley"}
 
-    output += "You're looking for " + food_ + "<br>"
-    output += "Checking " + str(datelist[0].strftime("%Y-%m-%d")) + " to " + str(datelist[-1].strftime("%Y-%m-%d")) + "<br>"
+    theurls = []
+
 
     for i in datelist:
         for hall in dining:
             date = i.strftime("%Y-%m-%d")
             dining_day = hall+"?menuDate=" + date
+            theurls.append(dining_day)
             #Query the website and return the html to the variable 'page'
-            page = urllib.request.urlopen(dining_day)
-            #Parse the html in the 'page' variable, and store it in Beautiful Soup format
-            soup = BeautifulSoup(page, "html.parser")
 
-            #big_table=soup.find(id = 'mdining-menu-main')
-            #print (big_table)
 
+
+    threadQueue = queue.Queue()
+    for u in theurls:
+        t = threading.Thread(target=getUrl, args = (threadQueue,u))
+        t.daemon = True
+        t.start()
+
+
+    for i in datelist:
+        for hall in dining:
+            date = i.strftime("%Y-%m-%d")
+            soup = threadQueue.get()
             food_table=soup.find_all('div', {"class" : 'item-name'})
-
             for row in food_table:
                 food = row.find(text=True)
-
                 if(food.find(food_) != -1):
                     output += date + ": " + location[hall] + "<br>"
                     output += row.find(text=True) + ": Looks like we have this today! <br>"
                     output += "================================== <br><br>"
-    
+
     if (len(output) == 0):
         output += "Oh noooo what you want isn't on the menu! :("
 
     output += "C'est tout! <br>"
+    output += "Runtime : " + str(time.time()-starting)
     return output
