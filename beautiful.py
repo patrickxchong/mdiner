@@ -53,6 +53,9 @@ def ribscraper(food_,start,numdays):
                     output += date + ": " + location[hall] + "<br>"
                     output += row.find(text=True) + ": Looks like we have this today! <br>"
                     output += "================================== <br><br>"
-                    
+    
+    if (len(output) == 0):
+        output += "Oh noooo what you want isn't on the menu! :( <br>"
+
     output += "C'est tout! <br>"
     return output
