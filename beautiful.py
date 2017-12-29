@@ -8,7 +8,7 @@ import datetime
 
 
 # from:2018-12-31&to:2018-01-01
-def ribscraper(start,numdays):
+def ribscraper(food_,start,numdays):
     output = ""
     date = start.split("-")
 
@@ -29,6 +29,7 @@ def ribscraper(start,numdays):
 
     location = {mj : "Mosher Jordan", burs : "Bursley", eq : "East Quad", nq : "North Quad", sq : "South Quad", mark : "Markley"}
 
+    output += "You're looking for " + food_ + "<br>"
     output += "Checking " + str(datelist[0].strftime("%Y-%m-%d")) + " to " + str(datelist[-1].strftime("%Y-%m-%d")) + "<br>"
 
     for i in datelist:
@@ -48,9 +49,9 @@ def ribscraper(start,numdays):
             for row in food_table:
                 food = row.find(text=True)
 
-                if(food.find("Rib") != -1):
+                if(food.find(food_) != -1):
                     output += date + ": " + location[hall] + "<br>"
-                    output += row.find(text=True) + ": Ribs Today! <br>"
+                    output += row.find(text=True) + ": Looks like we have this today! <br>"
                     output += "================================== <br><br>"
                     
     output += "C'est tout! <br>"

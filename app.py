@@ -1,7 +1,6 @@
 from flask import Flask, request, redirect
 from beautiful import ribscraper
 
-
 app = Flask(__name__)
 
 @app.route('/')
@@ -19,6 +18,7 @@ def homepage():
 
     <h1>Hello World!</h1>
     <form method="POST">
+    <p> Type of food: <input type="text" name="food_" value="Rib"> </p>
     <p> Starting date: <input type="date" id ='start' name="start"> </p> 
     <p> Number of days: <input type="number" name="numdays" min="1" max="15" value="2"> </p>
     <input type="submit">
@@ -50,14 +50,15 @@ def homepage():
 
 @app.route('/', methods=['POST'])
 def my_form_post():
+    food_ = request.form.get('food_')
     start = request.form.get('start')
     numdays = request.form.get('numdays')
     #end = request.form.get('end')
-    return redirect("/{start}/{numdays}".format(start=start,numdays=numdays))
+    return redirect("/{food_}/{start}/{numdays}".format(food_=food_,start=start,numdays=numdays))
 
-@app.route('/<start>/<numdays>')
-def scraper(start,numdays):
-    output = ribscraper(start,numdays)
+@app.route('/<food_>/<start>/<numdays>')
+def scraper(food_,start,numdays):
+    output = ribscraper(food_,start,numdays)
     return """
     <!DOCTYPE html>
     <html lang="en">
