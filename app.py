@@ -13,6 +13,7 @@ def homepage():
     <body>
 
     <h1>Hello World!</h1>
+    <p> This ribscraper aims to tell you when the dining hall serves what you like! </p>
     <form action = "" method="POST">
         <p> Type of food: <input type="text" name="food_" value="Rib"> </p>
         <p> Starting date: <input type="date" id ='start' name="start"> </p> 
@@ -32,7 +33,6 @@ def homepage():
     document.getElementById('start').value = today;
     </script>
     '''
-
 
 @app.route('/', methods=['POST'])
 def my_form_post():
