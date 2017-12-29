@@ -1,5 +1,5 @@
 import time
-starting = time.time()
+
 #import the library used to query a website
 import urllib.request
 
@@ -16,7 +16,7 @@ def getUrl(q, url):
 
 
 def ribscraper(food_,start,numdays):
-    
+    starting = time.time()
     #food_ = "Ribs"
     #start = "2017-01-04"
     #numdays = 2

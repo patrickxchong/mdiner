@@ -1,5 +1,5 @@
 from flask import Flask, request, redirect
-from beautiful import ribscraper
+from thread import ribscraper
 app = Flask(__name__)
 
 @app.route('/')
@@ -57,15 +57,17 @@ def scraper(food_,start,numdays):
     <p id="output"> Buffering ... </p>
     <input type="button" value="Go Back From Whence You Came!" onclick="history.back(-1)" />
     <script type="text/javascript">
+    
+
 
     function postData(input) {{
         $.post("/find/{food_}/{start}/{numdays}",{{name: "Donald Duck",city: "Duckburg"}},
         function callbackFunc(response) {{document.getElementById("output").innerHTML = response;
-        }});
+        }})
     }}
 
-    input = "Ribs"
-    result = postData(input);
+    postData();
+
     </script>
     </body>
     </html>""".format(food_=food_,start=start,numdays=numdays)
