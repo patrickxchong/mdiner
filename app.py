@@ -1,5 +1,5 @@
 from flask import Flask, request, redirect
-from thread import ribscraper
+from beautiful import ribscraper
 app = Flask(__name__)
 
 @app.route('/')
