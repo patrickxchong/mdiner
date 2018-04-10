@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>MDining Menu Scraper</title>
+  <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.png') }}">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="http://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheet.css') }}">
+</head>
+
+<body>
+  <h1> MDining Menu Scraper </h1>
+  <input type="button" value="Return to search!" onclick="history.back(-1)" />
+  <p id="output"> Buffering ... </p>
+
+
+  <script type="text/javascript">
+    function postData(input) {
+      {
+        $.post("/find/{{food_}}/{{start}}/{{numdays}}", {},
+          function callbackFunc(response) {
+            {
+              document.getElementById("output").innerHTML = response;
+            }
+          })
+      }
+    }
+    postData();
+  </script>
+
+</body>
+
+</html>

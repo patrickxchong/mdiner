@@ -27,8 +27,8 @@ def ribscraper(food_,start,numdays):
     #base = datetime.date(2018, 1, 2)
     datelist = [base + datetime.timedelta(days=x) for x in range(0, int(numdays))]
 
-    output += "You're looking for " + food_ + "<br>"
-    output += "Checking " + str(datelist[0].strftime("%Y-%m-%d")) + " to " + str(datelist[-1].strftime("%Y-%m-%d")) + "<br>"
+    output += "You're looking for <b>" + food_ + "</b><br>"
+    output += "Checking " + str(datelist[0].strftime("%Y-%m-%d")) + " to " + str(datelist[-1].strftime("%Y-%m-%d")) + "<br><br>"
     
     #specify the url
     mj = "https://dining.umich.edu/menus-locations/dining-halls/mosher-jordan/"
