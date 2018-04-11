@@ -35,11 +35,11 @@ def make_request_using_cache(url):
     unique_ident = get_unique_key(url)
 
     if unique_ident in CACHE_DICTION:
-        #print("Getting cached data...")
+        print("Getting cached data...")
         return CACHE_DICTION[unique_ident]
 
     else:
-        #print("Making a request for new data...")
+        print("Making a request for new data...")
         resp = requests.get(url)
         CACHE_DICTION[unique_ident] = resp.text
         dumped_json_cache = json.dumps(CACHE_DICTION)
