@@ -3,8 +3,3 @@ gunicorn
 bs4
 datetime
 requests
-json
-codecs
-sys
-threading
-queue
