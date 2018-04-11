@@ -79,15 +79,11 @@ input::-webkit-input-placeholder {
 }
 
 #submit_input {
-  display: flex;
-  justify-content: center;
-  height: 90px;
   border: none;
   background: none;
-  font-size: 80px;
+  font-size: 7vw;
   cursor: pointer;
-  float: center;
-  margin: auto;
+  border-radius: 100%;
 }
 
 span {
@@ -95,8 +91,8 @@ span {
   text-shadow: 2px 2px #D0D0D0;
 }
 
-#submit_input:hover {
-  font-size: 85px;
+span:hover {
+  color: yellow;
 }
 
 a {

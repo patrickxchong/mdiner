@@ -96,6 +96,8 @@ def ribscraper(food_,start,numdays):
         t.daemon = True
         t.start()
     
+    output += "<div class='food-wrapper'>"
+
     for i in datelist:
         date = i.strftime("%Y-%m-%d")
         for hall in dining:
@@ -105,13 +107,17 @@ def ribscraper(food_,start,numdays):
             for row in food_table:
                 food = row.find(text=True)
                 if(food.find(food_) != -1):
-                    output += "<div class='food' "+date + ": " + location[hall] + "<br>"
-                    output += "<a href="+url+">" + row.find(text=True) + "</a>: Looks like we have this today!  <br>"
-                    output += "</div><br><br>"
+                    output += "<a href="+url+" class='food'>"
+                    output += "<p>" + location[hall] + "</p>"
+                    output += "<p>" + date + "</p>"
+                    output += "<p>" + row.find(text=True) + "</p>"
+                    output += "</a>"
 
-    if (len(output) == (60 + len(food_))):
-        output += "Oh noooo what you want isn't on the menu! :("
+    output += "</div>"
 
-    output += "C'est tout! <br>"
-    output += "Runtime : " + str(time.time()-starting)
+    if (len(output) < (65 + len(food_))):
+        output += "<p>Oh noooo what you want isn't on the menu! :(</p>"
+
+    output += "<p>Voila!</p>"
+    #output += "Runtime : " + str(time.time()-starting)
     return output
