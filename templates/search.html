@@ -27,8 +27,7 @@
               document.getElementById("output").innerHTML = response;
             }
           }).fail(function(xhr) {
-              console.log(xhr.status);
-              console.log("failed");
+              document.getElementById("output").innerHTML = "Server Timed Out :( Please try again with a shorter day range!";
           });
       }
     }
