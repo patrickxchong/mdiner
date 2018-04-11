@@ -1,0 +1,63 @@
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  background-image: url("spare-ribs.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 97%;
+  height: 97%;
+  display: grid;
+  grid-template-rows: 1fr;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 3vw;
+  color: white;
+}
+
+h1 {
+  font-size: 4.5vw;
+}
+
+p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+input {
+  height: 2.5vw;
+  border-radius: 4px;
+  margin: 0px 5px;
+}
+
+#food_input {
+  min-width: 4vw;
+}
+
+#start_input {
+  min-width: 6vw;
+}
+
+#numdays_input {
+  min-width: 2vw;
+}
+
+a {
+  text-decoration: none;
+  font-weight: bold;
+  color: rgb(0, 0, 0, 0.7);
+}

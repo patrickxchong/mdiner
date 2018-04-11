@@ -5,30 +5,35 @@
   <meta charset="UTF-8">
   <title>MDining Menu Scraper</title>
   <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.png') }}">
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheet.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='home.css') }}">
 </head>
 
 <body>
+  <div>
+    <h1>MDining Menu Scraper!</h1>
 
-  <h1>Hello World!</h1>
-  <p> This site aims to tell you when the dining hall serves what you like! </p>
-  <form action="" method="POST">
-    <p> Type of food:
-      <input type="text" name="food_" value="Rib"> </p>
-    <p> Starting date:
-      <input type="date" id='start' name="start"> </p>
-    <p> Number of days:
-      <input type="number" name="numdays" min="1" max="15" value="2"> </p>
-    <input type="submit">
-  </form>
-  <script type="text/javascript">
-    var date = new Date();
-    var day = date.getDate();
-    var month = date.getMonth() + 1;
-    var year = date.getFullYear();
-    if (month < 10) month = "0" + month;
-    if (day < 10) day = "0" + day;
-    var today = year + "-" + month + "-" + day;
+    <p> This site aims to tell you when the dining hall serves what you like! </p>
 
-    document.getElementById('start').value = today;
-  </script>
+    <form action="" method="POST">
+      <p> Type of food:
+        <input type="text" id='food_input' name="food_" value="Rib"> </p>
+      <p> From
+        <input type="date" id='start_input' name="start"> for
+        <input type="number" id='numdays_input' name="numdays" min="1" max="15" value="2"> days</p>
+      <input type="submit">
+    </form>
+    <script type="text/javascript">
+      var date = new Date();
+      var day = date.getDate();
+      var month = date.getMonth() + 1;
+      var year = date.getFullYear();
+      if (month < 10) month = "0" + month;
+      if (day < 10) day = "0" + day;
+      var today = year + "-" + month + "-" + day;
+
+      document.getElementById('start_input').value = today;
+    </script>
+  </div>
+</body>
+
+</html>

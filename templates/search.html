@@ -8,12 +8,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="http://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
     crossorigin="anonymous"></script>
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheet.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='search.css') }}">
 </head>
 
 <body>
   <h1> MDining Menu Scraper </h1>
-  <input type="button" value="Return to search!" onclick="history.back(-1)" />
+  <!-- <input type="button" value="Return to search!" onclick="history.back(-1)" />  -->
+  <a id="home" href="/">Return to Home</a>
   <p id="output"> Buffering ... </p>
 
 
