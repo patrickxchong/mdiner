@@ -46,8 +46,8 @@ def ribscraper(food_,start,numdays):
 
 
     for i in datelist:
+        date = i.strftime("%Y-%m-%d")
         for hall in dining:
-            date = i.strftime("%Y-%m-%d")
             dining_day = hall+"?menuDate=" + date
             theurls.append(dining_day)
             #Query the website and return the html to the variable 'page'
@@ -62,15 +62,16 @@ def ribscraper(food_,start,numdays):
 
 
     for i in datelist:
+        date = i.strftime("%Y-%m-%d")
         for hall in dining:
-            date = i.strftime("%Y-%m-%d")
+            url = hall+"?menuDate=" + date
             soup = threadQueue.get()
             food_table=soup.find_all('div', {"class" : 'item-name'})
             for row in food_table:
                 food = row.find(text=True)
                 if(food.find(food_) != -1):
                     output += date + ": " + location[hall] + "<br>"
-                    output += row.find(text=True) + ": Looks like we have this today! <br>"
+                    output += "<a href="+url+">" + row.find(text=True) + "</a>: Looks like we have this today!  <br>"
                     output += "================================== <br><br>"
 
     if (len(output) == (60 + len(food_))):
