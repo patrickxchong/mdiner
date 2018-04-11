@@ -12,7 +12,7 @@ html {
 }
 
 body {
-  background-image: url("spare-ribs.png");
+  background-image: url("garden.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -20,40 +20,83 @@ body {
   height: 97%;
   display: grid;
   grid-template-rows: 1fr;
+  grid-template-columns: 20vw 1fr 20vw;
   justify-content: center;
   align-content: center;
   align-items: center;
   text-align: center;
   font-size: 3vw;
-  color: white;
+  color: #F0F0F0;
 }
 
 h1 {
+  display: flex;
   font-size: 4.5vw;
+  font-family: 'Bitter', serif;
+  align-items: center;
+  justify-content: center;
+  text-shadow: 2px 2px black;
+}
+
+#M {
+  color: #FFCB05;
+  padding: 0px 2px;
 }
 
 p {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: 'Quicksand', cursive;
 }
 
-input {
-  height: 2.5vw;
-  border-radius: 4px;
-  margin: 0px 5px;
+form p {
+  margin: 0;
+}
+
+input, 
+input::-webkit-input-placeholder {
+  height: 3vw;
+  border-radius: 20px;
+  margin: 0px 10px;
+  font-size: 2vw;
+  color: #404040;
 }
 
 #food_input {
   min-width: 4vw;
+  text-align: center;
 }
 
 #start_input {
-  min-width: 6vw;
+  min-width: 5.5vw;
+  text-align: right;
 }
 
 #numdays_input {
   min-width: 2vw;
+  text-align: center;
+}
+
+#submit_input {
+  display: flex;
+  justify-content: center;
+  height: 90px;
+  border: none;
+  background: none;
+  font-size: 80px;
+  cursor: pointer;
+  float: center;
+  margin: auto;
+}
+
+span {
+  color: #FFCB05;
+  text-shadow: 2px 2px #D0D0D0;
+}
+
+#submit_input:hover {
+  font-size: 85px;
 }
 
 a {

@@ -5,22 +5,26 @@
   <meta charset="UTF-8">
   <title>MDining Menu Scraper</title>
   <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.png') }}">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Bitter|Merriweather|Quicksand" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='home.css') }}">
 </head>
 
 <body>
+  <div></div>
+
   <div>
-    <h1>MDining Menu Scraper!</h1>
+    <h1><div id="M">M</div>Dining Menu Scraper</h1>
 
     <p> This site aims to tell you when the dining hall serves what you like! </p>
 
     <form action="" method="POST">
-      <p> Type of food:
-        <input type="text" id='food_input' name="food_" value="Rib"> </p>
-      <p> From
+      <p> I want 
+        <input type="text" id='food_input' name="food_" value="Ribs"> </p>
+      <p style="padding: 20px 0px"> from
         <input type="date" id='start_input' name="start"> for
         <input type="number" id='numdays_input' name="numdays" min="1" max="15" value="2"> days</p>
-      <input type="submit">
+        <button type="submit" id='submit_input'><span class="far fa-check-circle"></span></button>
     </form>
     <script type="text/javascript">
       var date = new Date();
@@ -34,6 +38,8 @@
       document.getElementById('start_input').value = today;
     </script>
   </div>
+
+  <div></div>
 </body>
 
 </html>
