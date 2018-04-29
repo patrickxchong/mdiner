@@ -1,8 +1,5 @@
 import time
 
-#import the library used to query a website
-import urllib.request
-
 #import the Beautiful soup functions to parse the data returned from the website
 from bs4 import BeautifulSoup
 
@@ -69,12 +66,12 @@ def ribscraper(food_,start,numdays):
     output += "Checking " + str(datelist[0].strftime("%Y-%m-%d")) + " to " + str(datelist[-1].strftime("%Y-%m-%d")) + "<br><br>"
     
     #specify the url
-    mj = "https://dining.umich.edu/menus-locations/dining-halls/mosher-jordan/"
-    burs = "https://dining.umich.edu/menus-locations/dining-halls/bursley/"
-    eq = "https://dining.umich.edu/menus-locations/dining-halls/east-quad/"
-    nq = "https://dining.umich.edu/menus-locations/dining-halls/north-quad/"
-    sq = "https://dining.umich.edu/menus-locations/dining-halls/south-quad/"
-    mark = "https://dining.umich.edu/menus-locations/dining-halls/markley/"
+    mj = "mosher-jordan"
+    burs = "bursley"
+    eq = "east-quad"
+    nq = "north-quad"
+    sq = "south-quad"
+    mark = "markley"
 
     dining = [mj, burs, eq, nq, sq, mark]
 
@@ -86,7 +83,7 @@ def ribscraper(food_,start,numdays):
     for i in datelist:
         date = i.strftime("%Y-%m-%d")
         for hall in dining:
-            dining_day = hall+"?menuDate=" + date
+            dining_day = "https://dining.umich.edu/menus-locations/dining-halls/" + hall+"?menuDate=" + date
             theurls.append(dining_day)
             #Query the website and return the html to the variable 'page'
 
@@ -101,7 +98,7 @@ def ribscraper(food_,start,numdays):
     for i in datelist:
         date = i.strftime("%Y-%m-%d")
         for hall in dining:
-            url = hall+"?menuDate=" + date
+            url = "https://dining.umich.edu/menus-locations/dining-halls/" + hall+"/?menuDate=" + date
             soup = threadQueue.get()
             food_table=soup.find_all('div', {"class" : 'item-name'})
             for row in food_table:
