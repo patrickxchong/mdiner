@@ -120,7 +120,7 @@ a {
 
 @media only screen and (max-width: 700px) {
   body {
-      font-size: 5.5vw;
+      font-size: 3vw;
   }
   h1 {
     font-size: 7vw;
@@ -145,7 +145,7 @@ a {
 
 @media only screen and (max-width: 500px) {
   body {
-      font-size: 5.5vw;
+      font-size: 3.5vw;
   }
   h1 {
     font-size: 7vw;
