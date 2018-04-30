@@ -160,10 +160,10 @@ a {
     align-items: center;
   }
   .food {
-    width: 30vw;
-    height: 30vw;
+    width: 40vw;
+    height: 40vw;
   }
   .food p {
-    font-size: 3vw;
+    font-size: 3.5vw;
   }
 }

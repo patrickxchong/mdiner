@@ -131,7 +131,7 @@ a {
     color: #404040;
   }
   #food_input {
-    min-width: 7vw;
+    width: 45vw;
     text-align: center;
   }
   #start_input,
