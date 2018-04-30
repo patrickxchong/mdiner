@@ -42,6 +42,7 @@
               for (var r = 0; r < res.length; ++r) {
                 var wrapper = document.createElement("a");
                 wrapper.href = res[r][0];
+                wrapper.target = "_blank";
                 wrapper.classList.add("food")
                 for (var d = 1; d < res[r].length; ++d) {
                   var par = document.createElement("p");
