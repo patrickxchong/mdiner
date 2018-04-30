@@ -16,16 +16,12 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  width: 97%;
-  height: 97%;
-  display: grid;
-  grid-template-rows: 1fr;
-  grid-template-columns: 20vw 1fr 20vw;
-  justify-content: center;
-  align-content: center;
+  margin: 0px;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   text-align: center;
-  font-size: 3vw;
+  font-size: 3.5vw;
   color: #F0F0F0;
 }
 
@@ -103,8 +99,21 @@ a {
 .footer {
   text-align: center;
   font-size: 1vw;
+  position:absolute;
+  bottom:1.5vw;
+  width:100%;
+  height:1vw;
+  padding-left: 5vw;
 }
 .footer a { 
   color: white;
   margin: 0px 10px;
+}
+
+
+@media only screen and (max-width: 650px) {
+  body {
+      background-color: lightblue;
+      background-image: none;
+  }
 }
