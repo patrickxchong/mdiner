@@ -131,10 +131,10 @@ a {
   }
   input,
   input::-webkit-input-placeholder {
-    height: 4.5vw;
+    height: 5.2vw;
     border-radius: 20px;
     margin: 0px 10px;
-    font-size: 3.7vw;
+    font-size: 3.8vw;
     color: #404040;
   }
   #food_input {
