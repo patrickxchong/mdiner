@@ -50,6 +50,13 @@ form p {
   margin: 0;
 }
 
+.date p {
+  padding: 20px 0px;
+}
+.date {
+  display: flex;
+}
+
 input,
 input::-webkit-input-placeholder {
   height: 3vw;
@@ -127,16 +134,30 @@ a {
     height: 4.5vw;
     border-radius: 20px;
     margin: 0px 10px;
-    font-size: 3vw;
+    font-size: 4.3vw;
     color: #404040;
   }
   #food_input {
-    width: 45vw;
+    width: 60vw;
     text-align: center;
   }
+  #start_input {
+    display: block;
+  }
+  /* #start_input:after {
+    content: "\a";
+    white-space: pre;
+  } */
   #start_input,
   #end_input {
     min-width: 6.5vw;
     text-align: right;
+  }
+
+  .date {
+    display: inline;
+  }
+  .date p:last-child {
+    padding-top: 0px;
   }
 }
