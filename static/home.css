@@ -84,7 +84,7 @@ input::-webkit-input-placeholder {
 
 span {
   color: #FFCB05;
-  text-shadow: 2px 2px #D0D0D0;
+  text-shadow: 0.2vw 0.3vw #D0D0D0;
 }
 
 span:hover {
