@@ -51,7 +51,7 @@ def getUrl(q, url):
 
 
 def ribscraper(food_,start,numdays):
-    starting = time.time()
+    # starting = time.time()
     #food_ = "Ribs"
     #start = "2017-01-04"
     #numdays = 2

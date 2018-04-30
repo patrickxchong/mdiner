@@ -5,44 +5,47 @@
   <meta charset="UTF-8">
   <title>MDining Menu Scraper</title>
   <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.png') }}">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg"
+    crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Bitter|Merriweather|Quicksand" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='home.css') }}">
 </head>
 
 <body>
   <div></div>
-
   <div>
-    <h1><div id="M">M</div>Dining Menu Scraper</h1>
-
+    <h1>
+      <div id="M">M</div>Dining Menu Scraper</h1>
     <p> What do you feel like eating? </p>
-
     <form action="" method="POST">
-      <p> I want 
-        <input type="text" id='food_input' name="food_" value="Ribs"> </p>
+      <p> I want
+        <input type="text" id="food_input" name="search" value="Chocolate Glazed Donuts" </p>
       <p style="padding: 20px 0px"> from
-        <input type="date" id='start_input' name="start"> for
-        <input type="number" id='numdays_input' name="numdays" min="1" max="15" value="2"> days</p>
-        <button type="submit" id='submit_input'><span class="far fa-check-circle"></span></button>
+        <input type="date" id="start_input" name="start"> to
+        <input type="date" id="end_input" name="end">
+      </p>
+      <button type="submit" id="submit_input">
+        <span class="far fa-check-circle"></span>
+      </button>
     </form>
-
-
-
     <script type="text/javascript">
-      var date = new Date();
-      var day = date.getDate();
-      var month = date.getMonth() + 1;
-      var year = date.getFullYear();
-      if (month < 10) month = "0" + month;
-      if (day < 10) day = "0" + day;
-      var today = year + "-" + month + "-" + day;
+      Date.prototype.toDateInputValue = (function () {
+        var local = new Date(this);
+        local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
+        return local.toJSON().slice(0, 10);
+      });
 
-      document.getElementById('start_input').value = today;
+      document.getElementById('start_input').value = new Date().toDateInputValue();
+      var date = new Date();
+      date.setDate(date.getDate() + 3);
+      document.getElementById('end_input').value = date.toDateInputValue();
     </script>
   </div>
-
   <div></div>
+  <div></div>
+  <div class="footer">
+    <p><a href="https://www.facebook.com/PatrickChongJinHua" target="_blank">About </a> | <a href="mailto:pcjh@umich.edu"> Contact </a> | <a>© Patrick Chong</a></p>
+  </div>
 </body>
 
 </html>

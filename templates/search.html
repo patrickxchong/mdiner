@@ -23,10 +23,28 @@
   <script type="text/javascript">
     function postData(input) {
       {
-        $.post("/find/{{food_}}/{{start}}/{{numdays}}", {},
+        $.post("/find/{{search}}/{{start}}/{{end}}", {},
           function callbackFunc(response) {
-            {
-              document.getElementById("output").innerHTML = response;
+            { 
+
+              output = document.getElementById("output");
+              output.innerHTML = "";
+              var div = document.createElement("div");
+              div.classList.add("food-wrapper")
+              output.appendChild(div);
+              res = JSON.parse(response);
+              console.log(res);
+              for (var r = 0; r < res.length; ++r) {
+                var wrapper = document.createElement("a");
+                wrapper.href = res[r][0];
+                wrapper.classList.add("food")
+                for (var d = 1; d < res[r].length; ++d) {
+                  var par = document.createElement("p");
+                  par.appendChild(document.createTextNode(res[r][d]));
+                  wrapper.appendChild(par);
+                }
+                div.appendChild(wrapper);
+              }
             }
           }).fail(function(xhr) {
             document.getElementById("output").innerHTML = "Server Timed Out :( Please try again with a shorter day range!";

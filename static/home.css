@@ -73,9 +73,9 @@ input::-webkit-input-placeholder {
   text-align: right;
 }
 
-#numdays_input {
-  min-width: 2vw;
-  text-align: center;
+#end_input {
+  min-width: 5.5vw;
+  text-align: right;
 }
 
 #submit_input {
@@ -97,6 +97,14 @@ span:hover {
 
 a {
   text-decoration: none;
-  font-weight: bold;
   color: rgb(0, 0, 0, 0.7);
+}
+
+.footer {
+  text-align: center;
+  font-size: 1vw;
+}
+.footer a { 
+  color: white;
+  margin: 0px 10px;
 }

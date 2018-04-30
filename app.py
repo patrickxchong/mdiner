@@ -1,6 +1,6 @@
 from flask import Flask, request, redirect
 from flask import render_template
-from thread import ribscraper
+from MDiningScraper import scraper
 import os
 
 app = Flask(__name__, static_url_path="/static")
@@ -34,21 +34,20 @@ def static_file_hash(filename):
 def homepage():
     return render_template("home.html")
 
-
 @app.route('/', methods=['POST'])
 def my_form_post():
-    food_ = request.form.get('food_')
+    search = request.form.get('search')
     start = request.form.get('start')
-    numdays = request.form.get('numdays')
-    return redirect("/{food_}/{start}/{numdays}".format(food_=food_,start=start,numdays=numdays))
+    end = request.form.get('end')
+    return redirect("/{search}/{start}/{end}".format(search=search,start=start,end=end))
 
-@app.route('/<food_>/<start>/<numdays>')
-def search(food_,start,numdays):
-    return render_template("search.html", food_=food_,start=start,numdays=numdays)
+@app.route('/<search>/<start>/<end>')
+def search(search,start,end):
+    return render_template("search.html", search=search,start=start,end=end)
 
-@app.route('/find/<food_>/<start>/<numdays>', methods=['POST'])
-def scraper(food_,start,numdays):
-    return ribscraper(food_,start,numdays)
+@app.route('/find/<search>/<start>/<end>', methods=['POST'])
+def python_scraper(search,start,end):
+    return scraper(search,start,end)
 
 if __name__ == "__main__":
     app.run(use_reloader = True, debug = True)

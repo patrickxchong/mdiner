@@ -13,6 +13,7 @@ html {
 
 body {
   background-image: url("garden.jpg");
+  background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -44,7 +45,7 @@ h1 {
 a {
   text-decoration: none;
   font-weight: bold;
-  color: white; 
+  color: white;
 }
 
 #output {
@@ -61,11 +62,26 @@ a {
 
 .food {
   border-radius: 100%;
-  border: 2px solid black;
+  background: white;
+  color: rgba(60, 47, 47, 1.0);
   width: 20vw;
   height: 20vw;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-bottom: 30px;
+}
+
+.food p {
+  margin: 0px;
+  font-size: 1.5vw;
+}
+
+.food p:nth-child(2) {
+  margin-bottom: 30px;
+}
+
+.food p:nth-child(4) {
+  margin-bottom: 30px;
 }
