@@ -6,7 +6,8 @@
   <title>MDining Menu Scraper</title>
   <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.png') }}">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg"
+    crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Bitter|Merriweather|Quicksand" rel="stylesheet">
   <script src="http://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
     crossorigin="anonymous"></script>
@@ -14,26 +15,31 @@
 </head>
 
 <body>
-    <h1><div id="M">M</div>Dining Menu Scraper</h1>
-  <!-- <input type="button" value="Return to search!" onclick="history.back(-1)" />  -->
+  <h1>
+    <div id="M">M</div>Dining Menu Scraper</h1>
+  <br>
+  <br>
   <a id="home" href="/">Return to Home</a>
-  <p id="output"> Buffering ... </p>
-
-
+  <br>
+  <br>
+  <div id="output">
+    <div id="spinner"></div>
+  </div>
   <script type="text/javascript">
     function postData(input) {
       {
         $.post("/find/{{search}}/{{start}}/{{end}}", {},
           function callbackFunc(response) {
-            { 
+            {
 
               output = document.getElementById("output");
+              spinner = document.getElementById("spinner");
+              output.removeChild(spinner);
               output.innerHTML = "";
               var div = document.createElement("div");
               div.classList.add("food-wrapper")
               output.appendChild(div);
               res = JSON.parse(response);
-              console.log(res);
               for (var r = 0; r < res.length; ++r) {
                 var wrapper = document.createElement("a");
                 wrapper.href = res[r][0];
@@ -46,16 +52,16 @@
                 div.appendChild(wrapper);
               }
             }
-          }).fail(function(xhr) {
-            document.getElementById("output").innerHTML = "Server Timed Out :( Please try again with a shorter day range!";
-            //  console.log(xhr.status);
-            //  console.log("failed");
-          });
+          }).fail(function (xhr) {
+          document.getElementById("output").innerHTML =
+            "Server Timed Out :( Please try again with a shorter day range!";
+          //  console.log(xhr.status);
+          //  console.log("failed");
+        });
       }
     }
     postData();
   </script>
-
 </body>
 
 </html>

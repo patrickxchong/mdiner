@@ -92,11 +92,6 @@ def scraper(search_in,start_str_in,end_str_in):
                 for dish in dishes:
                         if re.search(search, dish, re.IGNORECASE):
                             OUTPUT.append([url, dt.strftime("%Y-%m-%d"), location[hall], meal, dish])
-    # return "Good"
-    # OUT = {"res": OUTPUT}
-    # import web
-
-    # web.header('Content-Type', 'application/json')
     return json.dumps(OUTPUT)
 
 if __name__ == "__main__":
