@@ -134,20 +134,13 @@ a {
     height: 4.5vw;
     border-radius: 20px;
     margin: 0px 10px;
-    font-size: 3.5vw;
+    font-size: 3.7vw;
     color: #404040;
   }
   #food_input {
     width: 60vw;
     text-align: center;
   }
-  #start_input {
-    display: block;
-  }
-  /* #start_input:after {
-    content: "\a";
-    white-space: pre;
-  } */
   #start_input,
   #end_input {
     min-width: 6.5vw;
