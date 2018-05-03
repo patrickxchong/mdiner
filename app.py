@@ -29,7 +29,6 @@ def hashed_url_for_static_file(endpoint, values):
 def static_file_hash(filename):
   return int(os.stat(filename).st_mtime)
 
-
 @app.route('/')
 def homepage():
     return render_template("home.html")
