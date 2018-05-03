@@ -49,5 +49,4 @@ def python_scraper(search,start,end):
     return scraper(search,start,end)
 
 if __name__ == "__main__":
-    app.run(use_reloader = True, debug = False)
-
+    app.run(host = '0.0.0.0', use_reloader = True, threaded = True, debug = False)
