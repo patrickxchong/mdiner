@@ -16,9 +16,10 @@
 
 <body>
   <h1>
-    The<div id="M">M</div>Diner</h1>
+    The
+    <div id="M">M</div>Diner</h1>
   <br>
-  <a id="home" href="/">Return to Home</a>
+  <a id="home" href="/">Return Home</a>
   <br>
   <br>
   <div id="output">
@@ -29,32 +30,56 @@
       {
         $.post("/find/{{search}}/{{start}}/{{end}}", {},
           function callbackFunc(response) {
-            {
 
-              output = document.getElementById("output");
-              spinner = document.getElementById("spinner");
-              output.removeChild(spinner);
-              output.innerHTML = "";
-              var div = document.createElement("div");
-              div.classList.add("food-wrapper")
-              output.appendChild(div);
-              res = JSON.parse(response);
-              for (var r = 0; r < res.length; ++r) {
-                var wrapper = document.createElement("a");
-                wrapper.href = res[r][0];
-                wrapper.target = "_blank";
-                wrapper.classList.add("food")
-                for (var d = 1; d < res[r].length; ++d) {
-                  var par = document.createElement("p");
-                  par.appendChild(document.createTextNode(res[r][d]));
-                  wrapper.appendChild(par);
-                }
-                div.appendChild(wrapper);
+            output = document.getElementById("output");
+            spinner = document.getElementById("spinner");
+            output.removeChild(spinner);
+            output.innerHTML = "";
+            var div = document.createElement("div");
+            div.classList.add("food-wrapper")
+            output.appendChild(div);
+
+            res = JSON.parse(response);
+            if (res.length == 0) {
+              var wrapper = document.createElement("a");
+              wrapper.href = "/";
+              wrapper.classList.add("food")
+              var par = document.createElement("p");
+              par.innerHTML = "Sorry we don't have what you want :(";
+              wrapper.appendChild(par);
+              div.appendChild(wrapper);
+            }
+            for (var r = 0; r < res.length; ++r) {
+              var wrapper = document.createElement("a");
+              wrapper.href = res[r][0];
+              wrapper.target = "_blank";
+              wrapper.classList.add("food")
+              for (var d = 1; d < res[r].length; ++d) {
+                var par = document.createElement("p");
+                par.appendChild(document.createTextNode(res[r][d]));
+                wrapper.appendChild(par);
               }
+              div.appendChild(wrapper);
             }
           }).fail(function (xhr) {
-          document.getElementById("output").innerHTML =
-            "Server Timed Out :( Please try again with a shorter day range!";
+          output = document.getElementById("output");
+          spinner = document.getElementById("spinner");
+          output.removeChild(spinner);
+          output.innerHTML = "";
+          var div = document.createElement("div");
+          div.classList.add("food-wrapper")
+          output.appendChild(div);
+
+          var wrapper = document.createElement("a");
+          wrapper.href = "/";
+          wrapper.classList.add("food")
+          var par = document.createElement("p");
+          par.innerHTML = "Sorry we don't have what you want :(";
+          wrapper.appendChild(par);
+          div.appendChild(wrapper);
+
+          // document.getElementById("output").innerHTML =
+          //   "Server Timed Out :( Please try again with a shorter day range!";
           //  console.log(xhr.status);
           //  console.log("failed");
         });
