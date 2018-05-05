@@ -78,6 +78,7 @@ a {
 .food p {
   margin: 0px;
   font-size: 1.5vw;
+  width: 96%;
 }
 
 .food p:nth-child(2) {
