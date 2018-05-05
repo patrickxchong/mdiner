@@ -6,6 +6,10 @@
   box-sizing: border-box;
 }
 
+:root {
+  --h1-margin-top-bottom: 6vh;
+}
+
 html {
   height: 100%;
   width: 100%;
@@ -13,31 +17,54 @@ html {
 
 body {
   background-image: url("garden.jpg");
+  background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  margin: 0px;
+
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
+  height: 100%;
+  /* grid-template-rows: auto 1vh; */
+
+  margin: 0px;
   font-size: 30px;
+  text-align: center; 
+  align-items: center;
   color: #F0F0F0;
 }
 
-h1 {
-  display: flex;
-  font-size: 60px;
-  font-family: 'Bitter', serif;
-  align-items: center;
-  justify-content: center;
-  text-shadow: 2px 2px black;
+body div:first-child {
+  align-self: start;
+  flex: 1;
+  width: 100%;
 }
 
-#M {
+.footer {
+  text-align: center;
+  align-self: end;
+  font-size: 1.5vw;
+  width: 100%;
+}
+
+
+
+h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 60px;
+  font-family: 'Bitter', serif;
+  text-shadow: 2px 2px black;
+  margin-top: var(--h1-margin-top-bottom);
+  margin-bottom: var(--h1-margin-top-bottom);
+}
+
+div#M {
   color: #FFCB05;
   padding: 0px 2px;
   margin-left: 1.4vw;
+  flex: 0;
 }
 
 p {
@@ -45,6 +72,8 @@ p {
   justify-content: center;
   align-items: center;
   font-family: 'Quicksand', cursive;
+  margin-top: var(--h1-margin-top-bottom);
+  margin-bottom: var(--h1-margin-top-bottom);
 }
 
 form p {
@@ -88,6 +117,8 @@ input::-webkit-input-placeholder {
 }
 
 span {
+  margin-top: 2vh;
+  font-size: 7vw;
   color: #FFCB05;
   text-shadow: 2px 2px #D0D0D0;
 }
@@ -101,30 +132,22 @@ a {
   color: rgb(0, 0, 0, 0.7);
 }
 
-body {
-  display: grid;
-  height: 100%;
-  grid-template-rows: auto 1vw;
-}
-
-body div:first-child {
-  align-self: start;
-}
-
-.footer {
-  text-align: center;
-  align-self: end;
-  font-size: 1.5vw;
-  /* position: absolute; */
-  /* bottom: 3vw; */
-  width: 100%;
-  /* height: 1vw; */
-  padding-left: 5vw;
-}
-
 .footer a {
   color: white;
   margin: 0px 10px;
+}
+.footer p {
+  margin-bottom: 1vh;
+  display: flex;
+}
+
+.footer a:first-child, .footer a:last-child {
+  flex: 1;
+  text-align: start;
+}
+
+.footer a:first-child {
+  text-align: end;
 }
 
 @media only screen and (max-width: 700px) {
@@ -136,7 +159,6 @@ body div:first-child {
   }
   .footer {
     font-size: 2.5vw;
-    /* bottom: 6vw; */
   }
   span {
     color: #FFCB05;
