@@ -38,10 +38,13 @@ def my_form_post():
     search = request.form.get('search')
     start = request.form.get('start')
     end = request.form.get('end')
-    return redirect("/{search}/{start}/{end}".format(search=search,start=start,end=end))
+    return redirect("/search?q={search}&start={start}&end={end}".format(search=search,start=start,end=end))
 
-@app.route('/<search>/<start>/<end>')
-def search(search,start,end):
+@app.route('/search')
+def searcher():
+    search = request.args.get('q', default = '*', type = str)
+    start = request.args.get('start', default = '*', type = str)
+    end = request.args.get('end', default = '*', type = str)
     return render_template("search.html", search=search,start=start,end=end)
 
 @app.route('/find/<search>/<start>/<end>', methods=['POST'])
