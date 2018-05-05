@@ -106,6 +106,8 @@ input::-webkit-input-placeholder {
 #end_input {
   min-width: 5.5vw;
   text-align: right;
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
 }
 
 #submit_input {
