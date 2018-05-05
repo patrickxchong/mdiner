@@ -57,11 +57,7 @@ def scraper(search_in,start_str_in,end_str_in):
                 counter += 1
             
             CACHE_DICTION[url] = DAY
-            dumped_json_cache = json.dumps(CACHE_DICTION)
-            fw = open(CACHE_FNAME,"w")
-            fw.write(dumped_json_cache)
-            fw.close()
-            return CACHE_DICTION[url]
+            return DAY
 
     print ("You're looking for " + search)
     print ("Checking " + start_str + " to " + end_str)
@@ -92,6 +88,12 @@ def scraper(search_in,start_str_in,end_str_in):
                 for dish in dishes:
                         if re.search(search, dish, re.IGNORECASE):
                             OUTPUT.append([url, dt.strftime("%Y-%m-%d"), location[hall], meal, dish])
+    
+    dumped_json_cache = json.dumps(CACHE_DICTION)
+    fw = open(CACHE_FNAME,"w")
+    fw.write(dumped_json_cache)
+    fw.close()
+
     return json.dumps(OUTPUT)
 
 if __name__ == "__main__":
