@@ -1,11 +1,5 @@
 def scraper(search_in,start_str_in,end_str_in):
-    print(start_str_in)
-    print(end_str_in)
     OUTPUT = []
-
-    search = "Chocolate Glazed Donuts"
-    start_str = "2018-04-13"
-    end_str = "2018-04-24"
 
     search = search_in
     start_str = start_str_in
