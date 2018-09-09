@@ -3,3 +3,4 @@ gunicorn
 bs4
 datetime
 requests
+html5lib
