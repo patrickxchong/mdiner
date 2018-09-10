@@ -11,19 +11,25 @@ def scraper(search_in,start_str_in,end_str_in):
     import requests
     import json
     import re
+    from app import db
+    from app.models import Page
 
-    CACHE_FNAME = 'dining_sites.json'
-    try:
-        cache_file = open(CACHE_FNAME, 'r')
-        cache_contents = cache_file.read()
-        CACHE_DICTION = json.loads(cache_contents)
-        cache_file.close()
-    except:
-        CACHE_DICTION = {}
+    # CACHE_FNAME = 'dining_sites.json'
+    # try:
+    #     cache_file = open(CACHE_FNAME, 'r')
+    #     cache_contents = cache_file.read()
+    #     CACHE_DICTION = json.loads(cache_contents)
+    #     cache_file.close()
+    # except:
+    #     CACHE_DICTION = {}
 
     def get_menu(url):
-        if url in CACHE_DICTION:
-            return CACHE_DICTION[url]
+        # if url in CACHE_DICTION:
+            # return CACHE_DICTION[url]
+        if (db.session.query(db.exists().where(Page.url==url)).scalar()):
+            print("using DB")
+            return json.loads(Page.query.filter_by(url=url).first().json)
+            # db.session.add(Page(url=url,json=json.dumps(CACHE_DICTION[url])))
 
         else:
             DAY = {}
@@ -50,7 +56,10 @@ def scraper(search_in,start_str_in,end_str_in):
                 DAY[meal.text[1:]] = [food.string for food in courses[counter].find_all('div', {"class" : 'item-name'})]
                 counter += 1
             
-            CACHE_DICTION[url] = DAY
+            print("adding to DB")
+            db.session.add(Page(url=url,json=json.dumps(DAY)))
+            db.session.commit()
+            # CACHE_DICTION[url] = DAY
             return DAY
 
     print ("You're looking for " + search)
@@ -83,10 +92,12 @@ def scraper(search_in,start_str_in,end_str_in):
                         if re.search(search, dish, re.IGNORECASE):
                             OUTPUT.append([url, dt.strftime("%Y-%m-%d"), location[hall], meal, dish])
     
-    dumped_json_cache = json.dumps(CACHE_DICTION)
-    fw = open(CACHE_FNAME,"w")
-    fw.write(dumped_json_cache)
-    fw.close()
+    # dumped_json_cache = json.dumps(CACHE_DICTION)
+    # fw = open(CACHE_FNAME,"w")
+    # fw.write(dumped_json_cache)
+    # fw.close()
+
+    
 
     return json.dumps(OUTPUT)
 

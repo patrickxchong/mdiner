@@ -38,6 +38,25 @@
         <span class="far fa-check-circle"></span>
       </button>
     </form>
+    <script type="text/javascript">
+      document.addEventListener("keydown", function (e) {
+        var key = e.which || e.keyCode;
+        if (key === 13) { // 13 is enter
+          document.getElementById('submit_input').click();
+        }
+      })
+
+      Date.prototype.toDateInputValue = (function () {
+        var local = new Date(this);
+        local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
+        return local.toJSON().slice(0, 10);
+      });
+
+      document.getElementById('start_input').value = new Date().toDateInputValue();
+      var date = new Date();
+      date.setDate(date.getDate() + 3);
+      document.getElementById('end_input').value = date.toDateInputValue();
+    </script>
     <script>
       var foodPrompts = ["Chicken", "Beef", "Pork", "Mushroom", "Ribs", "Soup"];
 
@@ -144,18 +163,7 @@
       }
       autocomplete(document.getElementById("food_input"), foodPrompts);
     </script>
-    <script type="text/javascript">
-      Date.prototype.toDateInputValue = (function () {
-        var local = new Date(this);
-        local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
-        return local.toJSON().slice(0, 10);
-      });
 
-      document.getElementById('start_input').value = new Date().toDateInputValue();
-      var date = new Date();
-      date.setDate(date.getDate() + 3);
-      document.getElementById('end_input').value = date.toDateInputValue();
-    </script>
   </div>
   <div class="footer">
     <p>
