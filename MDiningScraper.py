@@ -27,7 +27,7 @@ def scraper(search_in,start_str_in,end_str_in):
         # if url in CACHE_DICTION:
             # return CACHE_DICTION[url]
         if (db.session.query(db.exists().where(Page.url==url)).scalar()):
-            print("using DB")
+            # print("using DB")
             return json.loads(Page.query.filter_by(url=url).first().json)
             # db.session.add(Page(url=url,json=json.dumps(CACHE_DICTION[url])))
 
@@ -89,15 +89,15 @@ def scraper(search_in,start_str_in,end_str_in):
             menu = get_menu(url)
             for meal, dishes in menu.items():
                 for dish in dishes:
-                        if re.search(search, dish, re.IGNORECASE):
-                            OUTPUT.append([url, dt.strftime("%Y-%m-%d"), location[hall], meal, dish])
-    
+                    if re.search(search, dish, re.IGNORECASE):
+                        OUTPUT.append([url, dt.strftime("%Y-%m-%d"), location[hall], meal, dish])
+                        # print ([dt.strftime("%Y-%m-%d"), location[hall], meal, dish])
+                        # yield json.dumps([url, dt.strftime("%Y-%m-%d"), location[hall], meal, dish])
+
     # dumped_json_cache = json.dumps(CACHE_DICTION)
     # fw = open(CACHE_FNAME,"w")
     # fw.write(dumped_json_cache)
     # fw.close()
-
-    
 
     return json.dumps(OUTPUT)
 
