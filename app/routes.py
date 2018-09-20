@@ -8,12 +8,14 @@ from MDiningScraper import scraper
 def homepage():
     return render_template("home.html")
 
-def stream_template(template_name, **context):                                                                                                                                                 
-    app.update_template_context(context)                                                                                                                                                       
-    t = app.jinja_env.get_template(template_name)                                                                                                                                              
-    rv = t.stream(context)                                                                                                                                                                     
-    rv.disable_buffering()                                                                                                                                                                     
-    return rv
+def stream_template(template_name, **context):      
+    with app.app_context():                  
+        with app.test_request_context():                                                                                                                      
+            app.update_template_context(context)                                                                                                                                                       
+            t = app.jinja_env.get_template(template_name)                                                                                                                                              
+            rv = t.stream(context)                                                                                                                                                                     
+            rv.disable_buffering()                                                                                                                                                                     
+            return rv
 
 @app.route('/', methods=['POST'])
 def my_form_post():
@@ -21,8 +23,8 @@ def my_form_post():
     start = request.form.get('start')
     end = request.form.get('end')
     results = scraper(search,start,end)
-    # return Response(stream_template('search.html', results=results))
-    return render_template("search.html", search=search,start=start,end=end)
+    return Response(stream_template('search.html', results=results))
+    # return render_template("search.html", search=search,start=start,end=end)
     # return redirect("/search?q={search}&start={start}&end={end}".format(search=search,start=start,end=end))
 
 @app.route('/search', methods=['POST'])
