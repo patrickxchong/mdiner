@@ -1,0 +1,12 @@
+{
+  "private": true,
+  "dependencies": {
+    "express": "^4.16.4",
+    "helmet": "^3.18.0",
+    "nodemon": "^1.19.1",
+    "request": "^2.88.0"
+  },
+  "scripts": {
+    "dev": "nodemon server.js"
+  }
+}
