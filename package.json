@@ -1,8 +1,11 @@
 {
   "private": true,
   "dependencies": {
+    "consola": "^2.10.1",
+    "dotenv": "^8.1.0",
     "express": "^4.16.4",
     "helmet": "^3.18.0",
+    "mongoose": "^5.6.10",
     "nodemon": "^1.19.1",
     "request": "^2.88.0"
   },

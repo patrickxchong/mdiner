@@ -1,2 +1,15 @@
-api/node_modules
-api/yarn.lock
+.DS_Store
+node_modules/
+dist/
+npm-debug.log
+yarn-error.log
+package-lock.json
+.idea
+*.iml
+.nuxt
+.vscode
+
+static/manifest*.json
+static/sw.js
+static/workbox-sw*.js*
+.env

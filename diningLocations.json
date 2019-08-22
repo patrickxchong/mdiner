@@ -1,0 +1,1365 @@
+[
+    {
+        "name": "Beansters League",
+        "hours": [
+            "Monday-Thursday: 7:00am-8:00pm",
+            "Friday: 7:00am-6:00pm",
+            "Saturday: Closed",
+            "Sunday: 10:00am-5:00pm"
+        ],
+        "hoursByWeekday": [
+            [
+                "Open: 10:00am-5:00pm"
+            ],
+            [
+                "Open: 7:00am-8:00pm"
+            ],
+            [
+                "Open: 7:00am-8:00pm"
+            ],
+            [
+                "Open: 7:00am-8:00pm"
+            ],
+            [
+                "Open: 7:00am-8:00pm"
+            ],
+            [
+                "Open: 7:00am-6:00pm"
+            ],
+            [
+            ]
+        ],
+        "contact": {
+            "phone": "734-764-3586",
+            "email": "beansters-league@umich.edu"
+        },
+        "address": {
+            "city": "Ann Arbor",
+            "state": "MI",
+            "street": "911 North University",
+            "zip": "48109"
+        },
+        "coordinate": {
+            "latitude": 42.279296,
+            "longitude": -83.7375576
+        },
+        "type": "cafe",
+        "id": "Beansters League"
+    },
+    {
+        "name": "Berts Cafe",
+        "hours": [
+            "Monday – Thursday:",
+            "8:00 AM - 1:00 AM",
+            "Friday: 8:00 AM - 5:00 PM",
+            "Saturday: 12:00 PM - 5:00 PM",
+            "Saturday: 11:00 AM - 5:00 PM"
+        ],
+        "hoursByWeekday": [
+            [
+                "Open: 11:00 AM - 1:00 AM"
+            ],
+            [
+                "Open: 8:00 AM - 1:00 AM"
+            ],
+            [
+                "Open: 8:00 AM - 1:00 AM"
+            ],
+            [
+                "Open: 8:00 AM - 1:00 AM"
+            ],
+            [
+                "Open: 8:00 AM - 1:00 AM"
+            ],
+            [
+                "Open: 8:00 AM - 5:00 PM"
+            ],
+            [
+                "Open: 12:00 PM - 5:00 PM"
+            ]
+        ],
+        "contact": {
+            "phone": "734-647-6237",
+            "email": "bertscafe-shapiro@umich.edu"
+        },
+        "address": {
+            "city": "Ann Arbor",
+            "state": "MI",
+            "street": "919 South University",
+            "zip": "48109"
+        },
+        "coordinate": {
+            "latitude": 42.2756189,
+            "longitude": -83.7371766
+        },
+        "type": "cafe",
+        "id": "Berts Cafe"
+    },
+    {
+        "name": "Blue Apple",
+        "hours": [
+            "Monday-Sunday: 8:00 PM - 1:00 AM"
+        ],
+        "hoursByWeekday": [
+            [
+                "Open: 8:00 PM - 1:00 AM"
+            ],
+            [
+                "Open: 8:00 PM - 1:00 AM"
+            ],
+            [
+                "Open: 8:00 PM - 1:00 AM"
+            ],
+            [
+                "Open: 8:00 PM - 1:00 AM"
+            ],
+            [
+                "Open: 8:00 PM - 1:00 AM"
+            ],
+            [
+                "Open: 8:00 PM - 1:00 AM"
+            ],
+            [
+                "Open: 8:00 PM - 1:00 AM"
+            ]
+        ],
+        "contact": {
+            "phone": "734-763-2583",
+            "email": "blueapple@umich.edu"
+        },
+        "address": {
+            "city": "Ann Arbor",
+            "state": "MI",
+            "street": "1931 Duffield",
+            "zip": "48104"
+        },
+        "coordinate": {
+            "latitude": 42.2936965,
+            "longitude": -83.7209326
+        },
+        "type": "market",
+        "id": "Blue Apple"
+    },
+    {
+        "name": "Bursley Dining Hall",
+        "hours": [
+            "Monday-Thursday",
+            "Continuous Service: 7:00 AM – 9:00 PM",
+            "Friday",
+            "Continuous Service: 7:00 AM – 8:00 PM",
+            "Saturday and Sunday",
+            "Brunch: 10:30am-2:00pm",
+            "Dinner: 5:00pm-8:00pm"
+        ],
+        "hoursByWeekday": [
+            [
+                "Brunch: 10:30 AM - 2:00 PM",
+                "Dinner: 5:00 PM – 8:00 PM"
+            ],
+            [
+                "Continuous Service: 7:00 AM – 9:00 PM"
+            ],
+            [
+                "Continuous Service: 7:00 AM – 9:00 PM"
+            ],
+            [
+                "Continuous Service: 7:00 AM – 9:00 PM"
+            ],
+            [
+                "Continuous Service: 7:00 AM – 9:00 PM"
+            ],
+            [
+                "Continuous Service: 7:00 AM – 8:00 PM"
+            ],
+            [
+                "Brunch: 10:30 AM - 2:00 PM",
+                "Dinner: 5:00 PM – 8:00 PM"
+            ]
+        ],
+        "capacity": 752,
+        "contact": {
+            "phone": "734-763-1120",
+            "email": "dining-bursley@umich.edu"
+        },
+        "address": {
+            "city": "Ann Arbor",
+            "state": "MI",
+            "street": "1931 Duffield",
+            "zip": "48109"
+        },
+        "coordinate": {
+            "latitude": 42.2936965,
+            "longitude": -83.7209326
+        },
+        "type": "dining_hall",
+        "id": "Bursley Dining Hall"
+    },
+    {
+        "name": "Cafe 32",
+        "hours": [],
+        "hoursByWeekday": [],
+        "contact": {
+            "phone": "734-615-3477",
+            "email": "cafe32-dentalschool@umich.edu"
+        },
+        "address": {
+            "city": "Ann Arbor",
+            "state": "MI",
+            "street": "1011 N University Avenue",
+            "zip": "48109"
+        },
+        "coordinate": {
+            "latitude": 42.2790994,
+            "longitude": -83.73638969999999
+        },
+        "type": "cafe",
+        "id": "Cafe 32"
+    },
+    {
+        "name": "East Quad Dining Hall",
+        "hours": [
+            "Monday-Friday",
+            "Breakfast and Lunch: 7:00 AM – 2:00 PM",
+            "Dinner: 5:00 PM – 8:00 PM",
+            "Saturday and Sunday:",
+            "Brunch: 10:30 AM – 2:00 PM",
+            "Dinner: 5:00 PM – 8:00 PM"
+        ],
+        "hoursByWeekday": [
+            [
+                "Brunch: 10:30 AM - 2:00 PM",
+                "Dinner: 5:00 PM – 8:00 PM"
+            ],
+            [
+                "Breakfast and Lunch: 7:00 AM – 2:00 PM",
+                "Dinner: 5:00 PM – 8:00 PM"
+            ],
+            [
+                "Breakfast and Lunch: 7:00 AM – 2:00 PM",
+                "Dinner: 5:00 PM – 8:00 PM"
+            ],
+            [
+                "Breakfast and Lunch: 7:00 AM – 2:00 PM",
+                "Dinner: 5:00 PM – 8:00 PM"
+            ],
+            [
+                "Breakfast and Lunch: 7:00 AM – 2:00 PM",
+                "Dinner: 5:00 PM – 8:00 PM"
+            ],
+            [
+                "Breakfast and Lunch: 7:00 AM – 2:00 PM",
+                "Dinner: 5:00 PM – 8:00 PM"
+            ],
+            [
+                "Brunch: 10:30 AM - 2:00 PM",
+                "Dinner: 5:00 PM – 8:00 PM"
+            ]
+        ],
+        "capacity": 300,
+        "contact": {
+            "phone": "734-764-0136",
+            "email": "dining-eastquad@umich.edu"
+        },
+        "address": {
+            "city": "Ann Arbor",
+            "state": "MI",
+            "street": "701 East University",
+            "zip": "48109"
+        },
+        "coordinate": {
+            "latitude": 42.2729343,
+            "longitude": -83.7352305
+        },
+        "type": "dining_hall",
+        "id": "East Quad Dining Hall"
+    },
+    {
+        "name": "Fields Cafe",
+        "hours": [
+            "Monday-Thursday: 7:00 AM – 6:00 PM",
+            "Friday: 7:00 AM – 5:00 PM",
+            "Saturday and Sunday: Closed"
+        ],
+        "hoursByWeekday": [
+            [
+            ],
+            [
+                "Open: 7:00 AM – 6:00 PM"
+            ],
+            [
+                "Open: 7:00 AM – 6:00 PM"
+            ],
+            [
+                "Open: 7:00 AM – 6:00 PM"
+            ],
+            [
+                "Open: 7:00 AM – 6:00 PM"
+            ],
+            [
+                "Open: 7:00 AM – 5:00 PM"
+            ],
+            [
+            ]
+        ],
+        "contact": {
+            "phone": "734-615-9193",
+            "email": "fieldscafe@umich.edu "
+        },
+        "address": {
+            "city": "Ann Arbor",
+            "state": "MI",
+            "street": "100 Washtenaw Avenue",
+            "zip": "48109"
+        },
+        "coordinate": {
+            "latitude": 42.2807096,
+            "longitude": -83.7338752
+        },
+        "type": "cafe",
+        "id": "Fields Cafe"
+    },
+    {
+        "name": "Fireside Cafe",
+        "hours": [
+            "Monday-Friday: 11:00 AM – 7:00 PM",
+            "Saturday and Sunday: Closed"
+        ],
+        "hoursByWeekday": [
+            [
+            ],
+            [
+                "Open: 11:00 AM – 7:00 PM"
+            ],
+            [
+                "Open: 11:00 AM – 7:00 PM"
+            ],
+            [
+                "Open: 11:00 AM – 7:00 PM"
+            ],
+            [
+                "Open: 11:00 AM – 7:00 PM"
+            ],
+            [
+                "Open: 11:00 AM – 7:00 PM"
+            ],
+            [
+            ]
+        ],
+        "contact": {
+            "phone": "734-764-7535",
+            "email": "firesidecafe@umich.edu "
+        },
+        "address": {
+            "city": "Ann Arbor",
+            "state": "Michigan",
+            "street": "2101 Bonisteel",
+            "zip": "48109"
+        },
+        "coordinate": {
+            "latitude": 42.2913265,
+            "longitude": -83.7174028
+        },
+        "type": "cafe",
+        "id": "Fireside Cafe"
+    },
+    {
+        "name": "Fireside Roast",
+        "hours": [
+            "Monday-Friday: 8:00 AM – 7:00 PM",
+            "Saturday and Sunday: Closed"
+        ],
+        "hoursByWeekday": [
+            [
+            ],
+            [
+                "Open: 8:00 AM – 7:00 PM"
+            ],
+            [
+                "Open: 8:00 AM – 7:00 PM"
+            ],
+            [
+                "Open: 8:00 AM – 7:00 PM"
+            ],
+            [
+                "Open: 8:00 AM – 7:00 PM"
+            ],
+            [
+                "Open: 8:00 AM – 7:00 PM"
+            ],
+            [
+            ]
+        ],
+        "contact": {
+            "phone": {},
+            "email": {}
+        },
+        "address": {
+            "city": "Ann Arbor",
+            "state": "Michigan",
+            "street": "2101 Bonisteel",
+            "zip": ""
+        },
+        "coordinate": {
+            "latitude": 42.2913265,
+            "longitude": -83.7174028
+        },
+        "type": "cafe",
+        "id": "Fireside Roast"
+    },
+    {
+        "name": "Java Blu at East Quad",
+        "hours": [
+            "Monday-Friday: 9:00am-1:00am",
+            "Saturday: 1:00pm-8:00pm",
+            "Sunday: 11:00am-1:00pm"
+        ],
+        "hoursByWeekday": [
+            [
+                "Brunch: 10:30am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Brunch: 10:30am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ]
+        ],
+        "contact": {
+            "phone": "734-764-8558",
+            "email": "javablu-eastquad@umich.edu"
+        },
+        "address": {
+            "city": "Ann Arbor",
+            "state": "MI",
+            "street": "701 East University",
+            "zip": "48109"
+        },
+        "coordinate": {
+            "latitude": 42.2729343,
+            "longitude": -83.7352305
+        },
+        "type": "cafe",
+        "id": "Java Blu at East Quad"
+    },
+    {
+        "name": "Java Blu at North Quad",
+        "hours": [
+            "Monday-Thursday",
+            "8:00am-4:00pm",
+            "9:00pm-1:00am",
+            "Friday",
+            "8:00am-4:00pm",
+            "Saturday and Sunday",
+            "Closed"
+        ],
+        "hoursByWeekday": [
+            [
+                "Brunch: 10:30am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Brunch: 10:30am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ]
+        ],
+        "contact": {
+            "phone": "734-764-0021",
+            "email": "javablu-northquad@umich.edu "
+        },
+        "address": {
+            "city": "Ann Arbor",
+            "state": "MI",
+            "street": "105 South State",
+            "zip": "48109"
+        },
+        "coordinate": {
+            "latitude": 42.2807324,
+            "longitude": -83.7400253
+        },
+        "type": "cafe",
+        "id": "Java Blu at North Quad"
+    },
+    {
+        "name": "Java Blu at South Quad",
+        "hours": [
+            "Sunday-Friday: 9:00pm-1am",
+            "Saturday: Closed",
+        ],
+        "hoursByWeekday": [
+            [
+                "Brunch: 10:30am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Brunch: 10:30am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ]
+        ],
+        "contact": {
+            "phone": "734-763-5887",
+            "email": "javablu-southquad@umich.edu"
+        },
+        "address": {
+            "city": "Ann Arbor",
+            "state": "MI",
+            "street": "600 East Madison",
+            "zip": "48109"
+        },
+        "coordinate": {
+            "latitude": 42.2737474,
+            "longitude": -83.742128
+        },
+        "type": "cafe",
+        "id": "Java Blu at South Quad"
+    },
+    {
+        "name": "Java Blu at SPH",
+        "hours": [
+            "Monday-Friday: 7:00am-5:00pm",
+            "Saturday and Sunday: Closed"
+        ],
+        "hoursByWeekday": [
+            [
+                "Brunch: 10:30am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Brunch: 10:30am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ]
+        ],
+        "contact": {
+            "phone": "734-647-3179",
+            "email": "javablu-sph@umich.edu"
+        },
+        "address": {
+            "city": "Ann Arbor",
+            "state": "MI",
+            "street": "1415 Washington Heights",
+            "zip": "48109"
+        },
+        "coordinate": {
+            "latitude": 42.2804938,
+            "longitude": -83.7300222
+        },
+        "type": "cafe",
+        "id": "Java Blu at SPH"
+    },
+    {
+        "name": "Java Blu at Taubman",
+        "hours": [
+            "Monday-Friday: 7:00am-5:00pm",
+            "Saturday and Sunday: Closed"
+        ],
+        "hoursByWeekday": [
+            [
+                "Brunch: 10:30am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Brunch: 10:30am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ]
+        ],
+        "contact": {
+            "phone": "734-615-1924",
+            "email": "javablu-taubman@umich.edu "
+        },
+        "address": {
+            "city": "Ann Arbor",
+            "state": "MI",
+            "street": "1135 Catherine",
+            "zip": "48109"
+        },
+        "coordinate": {
+            "latitude": 42.28354789999999,
+            "longitude": -83.7344509
+        },
+        "type": "cafe",
+        "id": "Java Blu at Taubman"
+    },
+    {
+        "name": "Lawyers Club Dining Hall",
+        "hours": [
+            "Sunday-Friday",
+            "Lunch: 11:30am-1:00pm",
+            "Dinner: 5:30pm-7:00pm"
+        ],
+        "hoursByWeekday": [
+            [
+                "Brunch: 10:30am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Brunch: 10:30am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ]
+        ],
+        "capacity": 250,
+        "contact": {
+            "phone": "734 764 1115",
+            "email": "lcfoodpros@umich.edu"
+        },
+        "address": {
+            "city": "Ann Arbor",
+            "state": "Michigan",
+            "street": "551 South State",
+            "zip": "48109"
+        },
+        "coordinate": {
+            "latitude": 42.2741732,
+            "longitude": -83.73945959999999
+        },
+        "type": "dining_hall",
+        "id": "Lawyers Club Dining Hall"
+    },
+    {
+        "name": "Markley Dining Hall",
+        "hours": [
+            "Monday-Friday",
+            "Breakfast: 7:00am-10:00am",
+            "Lunch: 11:00am-2:00pm",
+            "Dinner: 5:00pm-8:00pm",
+            "Saturday and Sunday",
+            "Closed"
+        ],
+        "hoursByWeekday": [
+            [
+                "Brunch: 10:30am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Brunch: 10:30am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ]
+        ],
+        "capacity": 340,
+        "contact": {
+            "phone": "734-764-1151",
+            "email": "dining-markley@umich.edu"
+        },
+        "address": {
+            "city": "Ann Arbor",
+            "state": "Michigan",
+            "street": "1503 Washington Heights",
+            "zip": "48109"
+        },
+        "coordinate": {
+            "latitude": 42.280921,
+            "longitude": -83.728797
+        },
+        "type": "dining_hall",
+        "id": "Markley Dining Hall"
+    },
+    {
+        "name": "Martha Cook Dining Hall",
+        "hours": [
+            "Winter 2016 Hours",
+            "Monday-Thursday",
+            "Continental Breakfast: 6:30am-9:45am",
+            "Lunch: 11:00am-1:30pm",
+            "Dinner: 4:30pm-7:30pm",
+            "Friday",
+            "Continental Breakfast: 6:30am-9:45am",
+            "Lunch: 11:00am-1:30pm",
+            "Dinner: 5:00pm-7:00pm",
+            "Saturday",
+            "Brunch: 10:00am-1:30pm",
+            "Sunday ",
+            "Brunch: 10:00am-1:30pm",
+            "Sit Down Dinner: 5:15pm-6:30pm"
+        ],
+        "hoursByWeekday": [
+            [
+                "Brunch: 10:30am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Brunch: 10:30am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ]
+        ],
+        "capacity": 100,
+        "contact": {
+            "phone": "734-763-2085",
+            "email": "mscher@umich.edu"
+        },
+        "address": {
+            "city": "Ann Arbor",
+            "state": "MI",
+            "street": "906 South University",
+            "zip": "48109"
+        },
+        "coordinate": {
+            "latitude": 42.274062,
+            "longitude": -83.73701899999999
+        },
+        "type": "dining_hall",
+        "id": "Martha Cook Dining Hall"
+    },
+    {
+        "name": "Mosher Jordan Dining Hall",
+        "hours": [
+            "Monday-Thursday",
+            "Continuous Service: 7:00am-9:00pm",
+            "Friday",
+            "Continuous Service: 7:00am-8:00pm",
+            "Saturday and Sunday",
+            "Brunch: 9:00am-1:30pm",
+            "Dinner:  5:00pm-8:00pm"
+        ],
+        "hoursByWeekday": [
+            [
+                "Brunch: 10:30am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Brunch: 10:30am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ]
+        ],
+        "capacity": 679,
+        "contact": {
+            "phone": "734-764-2111",
+            "email": "dining-hill@umich.edu"
+        },
+        "address": {
+            "city": "Ann Arbor",
+            "state": "MI",
+            "street": "200 Observatory",
+            "zip": "48109"
+        },
+        "coordinate": {
+            "latitude": 42.2799921,
+            "longitude": -83.7313665
+        },
+        "type": "dining_hall",
+        "id": "Mosher Jordan Dining Hall"
+    },
+    {
+        "name": "MUJO Cafe",
+        "hours": [
+            "Monday-Thursday: 7:00am-2:00am",
+            "Friday: 7:00am-8:00pm",
+            "Saturday: 12:00pm-6:00pm",
+            "Sunday: 10:00am-2:00am"
+        ],
+        "hoursByWeekday": [
+            [
+                "Brunch: 10:30am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Brunch: 10:30am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ]
+        ],
+        "contact": {
+            "phone": "734-615-4325",
+            "email": "mujocafe-duderstadt@umich.edu"
+        },
+        "address": {
+            "city": "Ann Arbor",
+            "state": "MI",
+            "street": "2281 Bonisteel",
+            "zip": "48109"
+        },
+        "coordinate": {
+            "latitude": 42.291072,
+            "longitude": -83.715734
+        },
+        "type": "cafe",
+        "id": "MUJO Cafe"
+    },
+    {
+        "name": "North Quad Dining Hall",
+        "hours": [
+            "Monday-Friday",
+            "Breakfast and Lunch:  7:00am-2:00pm",
+            "Dinner: 5:00pm-8:00pm",
+            "Saturday and Sunday:",
+            "Brunch: 10:30am-2:00pm",
+            "Dinner: 5:00pm-8:00pm"
+        ],
+        "hoursByWeekday": [
+            [
+                "Brunch: 10:30am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Brunch: 10:30am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ]
+        ],
+        "capacity": 196,
+        "contact": {
+            "phone": "734-764-0170",
+            "email": "dining-northquad@umich.edu"
+        },
+        "address": {
+            "city": "Ann Arbor",
+            "state": "MI",
+            "street": "105 South State",
+            "zip": "48109"
+        },
+        "coordinate": {
+            "latitude": 42.2807324,
+            "longitude": -83.7400253
+        },
+        "type": "dining_hall",
+        "id": "North Quad Dining Hall"
+    },
+    {
+        "name": "South Quad Dining Hall",
+        "hours": [
+            "Monday-Thursday",
+            "Continuous Service: 7:00am-9:00pm",
+            "Friday",
+            "Continuous Service: 7:00am-8:00pm",
+            "Saturday and Sunday",
+            "Brunch: 9:00am-1:30pm",
+            "Dinner:  5:00pm-8:00pm"
+        ],
+        "hoursByWeekday": [
+            [
+                "Brunch: 10:30am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Brunch: 10:30am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ]
+        ],
+        "capacity": 951,
+        "contact": {
+            "phone": "734-764-0169",
+            "email": "dining-southquad@umich.edu"
+        },
+        "address": {
+            "city": "Ann Arbor",
+            "state": "MI",
+            "street": "600 East Madison",
+            "zip": "48109"
+        },
+        "coordinate": {
+            "latitude": 42.2737474,
+            "longitude": -83.742128
+        },
+        "type": "dining_hall",
+        "id": "South Quad Dining Hall"
+    },
+    {
+        "name": "Twigs at Oxford",
+        "hours": [
+            "Monday-Friday",
+            "Breakfast: 7:00am-10:00am",
+            "Lunch:  11:00am-2:00pm",
+            "Dinner: 5:00pm-8:00pm",
+            "Saturday and Sunday",
+            "Brunch: 10:30am-2:00pm",
+            "Dinner:  5:00pm-8:00pm"
+        ],
+        "hoursByWeekday": [
+            [
+                "Brunch: 10:30am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Brunch: 10:30am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ]
+        ],
+        "capacity": 125,
+        "contact": {
+            "phone": "734-763-7200",
+            "email": "dining-twigsatoxford@umich.edu"
+        },
+        "address": {
+            "city": "Ann Arbor",
+            "state": "MI",
+            "street": "619 Oxford",
+            "zip": "48109"
+        },
+        "coordinate": {
+            "latitude": 42.27459930000001,
+            "longitude": -83.7260787
+        },
+        "type": "dining_hall",
+        "id": "Twigs at Oxford"
+    },
+    {
+        "name": "Ugos League",
+        "hours": [
+            "Monday-Sunday: 7:00am-11:00pm"
+        ],
+        "hoursByWeekday": [
+            [
+                "Brunch: 10:30am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Brunch: 10:30am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ]
+        ],
+        "contact": {
+            "phone": "734-647-5343",
+            "email": "ugos-league@umich.edu"
+        },
+        "address": {
+            "city": "Ann Arbor",
+            "state": "MI",
+            "street": "911 North University",
+            "zip": "48109"
+        },
+        "coordinate": {
+            "latitude": 42.279296,
+            "longitude": -83.7375576
+        },
+        "type": "market",
+        "id": "Ugos League"
+    },
+    {
+        "name": "Ugos Pierpont",
+        "hours": [
+            "Monday-Thursday: 8:00am-12 midnight",
+            "Friday: 8:00am-8:00pm",
+            "Saturday: 12:00pm-5:00pm",
+            "Sunday: 3:00pm-11:00pm"
+        ],
+        "hoursByWeekday": [
+            [
+                "Brunch: 10:30am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Brunch: 10:30am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ]
+        ],
+        "contact": {
+            "phone": "734-647-7551",
+            "email": "ugos-pierpont@umich.edu "
+        },
+        "address": {
+            "city": "Ann Arbor",
+            "state": "MI",
+            "street": "2101 Bonisteel",
+            "zip": "48109"
+        },
+        "coordinate": {
+            "latitude": 42.2913265,
+            "longitude": -83.7174028
+        },
+        "type": "market",
+        "id": "Ugos Pierpont"
+    },
+    {
+        "name": "Ugos Union",
+        "hours": [
+            "Monday-Friday: 7:30am-11:00pm",
+            "Saturday: 9:00am-10:00pm",
+            "Sunday: 10:00am-11:00pm"
+        ],
+        "hoursByWeekday": [
+            [
+                "Brunch: 10:30am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Brunch: 10:30am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ]
+        ],
+        "contact": {
+            "phone": "734-647-2067",
+            "email": "ugos-union@umich.edu"
+        },
+        "address": {
+            "city": "Ann Arbor",
+            "state": "MI",
+            "street": "530 South State",
+            "zip": "48109"
+        },
+        "coordinate": {
+            "latitude": 42.2752282,
+            "longitude": -83.7415149
+        },
+        "type": "market",
+        "id": "Ugos Union"
+    },
+    {
+        "name": "Victors",
+        "hours": [
+            "Monday-Thursday: 8:00am-1:00am",
+            "Friday: 8:00am-11:00pm",
+            "Saturday: 9:00am-11:00pm",
+            "Sunday: 9:00am-1:00am"
+        ],
+        "hoursByWeekday": [
+            [
+                "Brunch: 10:30am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Breakfast and Lunch: 7:00am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ],
+            [
+                "Brunch: 10:30am-2:00pm",
+                "Dinner: 5:00pm-8:00pm"
+            ]
+        ],
+        "contact": {
+            "phone": "734-764-2118",
+            "email": "victors-hill@umich.edu"
+        },
+        "address": {
+            "city": "Ann Arbor",
+            "state": "MI",
+            "street": "200 Observatory",
+            "zip": "48109"
+        },
+        "coordinate": {
+            "latitude": 42.2799921,
+            "longitude": -83.7313665
+        },
+        "type": "market",
+        "id": "Victors"
+    }
+]

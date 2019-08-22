@@ -8,5 +8,8 @@
   "routes": [
     { "src": "^/api(.*)", "dest": "api/index.js" },
     { "src": "/", "dest": "www/index.html" }
-  ]
+  ],
+  "env": {
+    "MDINER_MONGO_CONNECTION_STRING": "@mdiner_mongo_connection_string"
+  }
 }
