@@ -39,6 +39,14 @@
       </button>
     </form>
     <script type="text/javascript">
+      document.querySelector("#submit_input").addEventListener("click", function (e) {
+        if (document.getElementById('start_input').value > document.getElementById('end_input').value) {
+          var temp = document.getElementById('start_input').value;
+          document.getElementById('start_input').value = document.getElementById('end_input').value;
+          document.getElementById('end_input').value = temp;
+        }
+        var today = new Date().toDateInputValue();
+      })
       document.addEventListener("keydown", function (e) {
         var key = e.which || e.keyCode;
         if (key === 13) { // 13 is enter

@@ -8,14 +8,12 @@ from MDiningScraper import scraper
 def homepage():
     return render_template("home.html")
 
-def stream_template(template_name, **context):      
-    with app.app_context():                  
-        with app.test_request_context():                                                                                                                      
-            app.update_template_context(context)                                                                                                                                                       
-            t = app.jinja_env.get_template(template_name)                                                                                                                                              
-            rv = t.stream(context)                                                                                                                                                                     
-            rv.disable_buffering()                                                                                                                                                                     
-            return rv
+def stream_template(template_name, **context):                                                                                                                      
+    app.update_template_context(context)                                                                                                                                                       
+    t = app.jinja_env.get_template(template_name)                                                                                                                                              
+    rv = t.stream(context)                                                                                                                                                                     
+    rv.disable_buffering()                                                                                                                                                                     
+    return rv
 
 @app.route('/', methods=['POST'])
 def my_form_post():
