@@ -1,12 +1,13 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const MenuSchema = mongoose.Schema(
   {
-    content: String,
+    id: String,
+    meals: String
   },
   {
-    timestamps: true,
-  },
+    timestamps: true
+  }
 );
 
-module.exports = mongoose.model('Menu', MenuSchema);
+module.exports = mongoose.model("Menu", MenuSchema);

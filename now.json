@@ -7,6 +7,8 @@
   ],
   "routes": [
     { "src": "^/api(.*)", "dest": "api/index.js" },
+    { "src": "^/static/(.*)", "dest": "www/static/$1" },
+    { "src": "/search", "dest": "www/search.html" },
     { "src": "/", "dest": "www/index.html" }
   ],
   "env": {

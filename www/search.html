@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>The MDiner</title>
+    <meta
+      name="description"
+      content="A simple app that tells you when and where the dining hall serves what you would like!"
+    />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="shortcut icon" href="/static/favicon.png" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.0.10/css/all.css"
+      integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Bitter|Quicksand"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="/static/search.css" />
+    <style>
+      h1 {
+        margin: 3vh;
+      }
+
+      .lds-circle {
+        display: inline-block;
+        width: 60px;
+        height: 60px;
+        padding: 6px;
+        border-radius: 50%;
+        background: #fff;
+        animation: lds-circle 2.4s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+        margin-bottom: 3vh;
+      }
+
+      .lds-circle img {
+        width: 50px;
+        height: 50px;
+      }
+
+      @keyframes lds-circle {
+        0%,
+        100% {
+          animation-timing-function: cubic-bezier(0.5, 0, 1, 0.5);
+        }
+
+        0% {
+          transform: rotateY(0deg);
+        }
+
+        50% {
+          transform: rotateY(1800deg);
+          animation-timing-function: cubic-bezier(0, 0.5, 0.5, 1);
+        }
+
+        100% {
+          transform: rotateY(3600deg);
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>
+      The
+      <div id="M">M</div>
+      Diner
+    </h1>
+    <div class="lds-circle"><img src="/static/Spoon-fork.png" /></div>
+    <a id="home" href="/">Return Home</a>
+    <br />
+    <br />
+    <div id="output">
+      <div class="food-wrapper">
+        <!-- {% for item in results %}
+        <a href="{{item.0}}" target="_blank" class="food">
+          <p>{{item[1]}}</p>
+          <p>{{item[2]}}</p>
+          <p>{{item[3]}}</p>
+          <p>{{item[4]}}</p>
+        </a>
+        {% endfor %} -->
+      </div>
+    </div>
+    <script>
+      fetch(`/api/menu`)
+      document.querySelector(".lds-circle").style.display = "none";
+    </script>
+  </body>
+</html>

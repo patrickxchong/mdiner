@@ -4,6 +4,7 @@ const consola = require("consola");
 const express = require("express");
 const helmet = require("helmet");
 const request = require("request");
+const path = require("path");
 
 const app = express();
 
@@ -25,6 +26,8 @@ mongoose
     consola.info(`Could not connect to the database. Exiting now... ${err}`);
     process.exit();
   });
+
+require("./routes/menu.routes")(app);
 
 app.get("/api", (req, res) => {
   request(
@@ -53,6 +56,31 @@ app.get("/api", (req, res) => {
   );
 });
 
-require("./routes/menu.routes")(app);
+app.get("/api/clear", (req, res) => {
+  const Menu = require("./models/menu.model");
+  Menu.collection.deleteMany({});
+
+  console.log("Successfully cleared database");
+  res.send("Successfully cleared database");
+});
+app.get("/api/findAll", (req, res) => {
+  const Menu = require("./models/menu.model");
+  Menu.find()
+    .then(menus => {
+      res.send(menus);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: err.message || "Some error occurred while retrieving menus."
+      });
+    });
+});
+
+app.get("/search", function(req, res) {
+  res.sendFile(path.join(__dirname, "..", "/www/search.html"));
+  return;
+});
+
+app.use(express.static("www"));
 
 module.exports = app;
