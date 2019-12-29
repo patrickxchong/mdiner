@@ -13,11 +13,29 @@ const DINING_LOCATIONS = [
   "Twigs at Oxford"
 ];
 
+const DINING_LOCATIONS_URLS = {
+  "Bursley Dining Hall": "bursley",
+  "East Quad Dining Hall": "east-quad",
+  "Mosher Jordan Dining Hall": "mosher-jordan",
+  "South Quad Dining Hall": "south-quad",
+  "North Quad Dining Hall": "north-quad",
+  "Markley Dining Hall": "markley",
+  "Martha Cook Dining Hall": "select-access/martha-cook",
+  "Twigs at Oxford": "twigs-at-oxford"
+};
+
 module.exports = app => {
   app.get("/api/menu", async (req, res) => {
     if (!req.query.date) {
       res.status(400).send({
         Error: "Date not defined."
+      });
+      return;
+    }
+
+    if (!req.query.item) {
+      res.status(400).send({
+        Error: "Item not defined."
       });
       return;
     }
@@ -36,7 +54,7 @@ module.exports = app => {
     }
     console.log(diningLocations);
 
-    let results = {};
+    let results = [];
     for (let location of diningLocations) {
       let id = `${req.query.date},${location.replace(/\s/g, "")}`;
       console.log(id);
@@ -66,15 +84,26 @@ module.exports = app => {
           // console.log(menu);
         });
       }
-      let menu = {};
+      // let menu = [];
       try {
         for (let meal of meals) {
           if (Array.isArray(meal.course)) {
-            menu[meal.name] = [];
+            // menu[meal.name] = [];
             for (let station of meal.course) {
               if (Array.isArray(station.menuitem)) {
                 for (let food of station.menuitem) {
-                  menu[meal.name].push(food.name);
+                  // menu[meal.name].push(food.name);
+                  if (
+                    food.name.search(new RegExp(req.query.item, "ig")) != -1
+                  ) {
+                    results.push({
+                      url: `https://dining.umich.edu/menus-locations/dining-halls/${DINING_LOCATIONS_URLS[location]}/?menuDate=${req.query.date}`,
+                      date: req.query.date,
+                      location,
+                      meal: meal.name,
+                      name: food.name
+                    });
+                  }
                 }
               }
             }
@@ -84,7 +113,7 @@ module.exports = app => {
         console.log(meals);
         console.log(e);
       }
-      results[location] = meals; //menu;
+      // results[location] = menu; //menu;
     }
     res.json(results);
   });

@@ -87,7 +87,71 @@
       </div>
     </div>
     <script>
-      fetch(`/api/menu`)
+      function createDateAsUTC(date) {
+        return new Date(
+          Date.UTC(
+            date.getFullYear(),
+            date.getMonth(),
+            date.getDate(),
+            date.getHours(),
+            date.getMinutes(),
+            date.getSeconds()
+          )
+        );
+      }
+
+      function convertDateToUTC(date) {
+        return new Date(
+          date.getUTCFullYear(),
+          date.getUTCMonth(),
+          date.getUTCDate(),
+          date.getUTCHours(),
+          date.getUTCMinutes(),
+          date.getUTCSeconds()
+        );
+      }
+
+      let results = [];
+      const urlParams = new URLSearchParams(window.location.search);
+      console.log(urlParams.get("start"));
+      console.log(urlParams.get("end"));
+      console.log(urlParams.get("item"));
+      let start = new Date(urlParams.get("start"));
+      let end = new Date(urlParams.get("end"));
+      let item = urlParams.get("item");
+
+      let loop = new Date(start);
+      while (loop <= end) {
+        let date = loop.toISOString().slice(0, 10);
+        console.log(date);
+
+        fetch(`/api/menu?item=${item}&date=${date}`)
+          .then(response => {
+            if (!response.ok) {
+              throw new Error("Network response was not ok");
+            }
+            return response.json();
+          })
+          .then(json => {
+            results = results.concat(json);
+            document.querySelector(".food-wrapper").innerHTML = results.map(
+              result => {
+                return `<a href="${result.url}" target="_blank" class="food">
+          <p>${result.date}</p>
+          <p>${result.location}</p>
+          <p>${result.meal}</p>
+          <p>${result.name}</p>
+        </a>`;
+              }
+            ).join("");
+          })
+          .catch(error => {
+            console.error("There has been a problem with Fetch:", error);
+          });
+
+        let newDate = loop.setDate(loop.getDate() + 1);
+        loop = new Date(newDate);
+      }
       document.querySelector(".lds-circle").style.display = "none";
     </script>
   </body>
