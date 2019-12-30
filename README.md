@@ -1,93 +1,54 @@
-# Express API with a Static Frontend on ZEIT Now
+# The MDiner
 
-**Live Demo**: https://express.now-examples.now.sh/
+A simple web app built with Express.js that searches for food that the user desires from [MDining](https://dining.umich.edu/) dining halls within a specified date range.
 
-This example shows a pre-setup project including:
+The app works by getting data from the UMich Student Life API, and storing the food data in a remote MongoDB server for quick retrieval.
 
-- An `api` directory, containing a single endpoint that retrieves the current time with Express built with the [@now/node Builder](https://zeit.co/docs/v2/deployments/official-builders/node-js-now-node/).
-- A `www` directory, containing static files such as `index.html` and `style.css` that show a frontend with information from the API.
+## Usage
 
-## Get Started with This Project
+- Go to the [MDiner](https://mdiner.now.sh)
+- Type in what you would like to eat
+- Select a date range (or use the default range)
+- Click ✅ and I hope you find what you're looking for!
 
-To get started with this project yourself, you can use [Now CLI](https://zeit.co/download) to initialize it.
+## Installation
 
-From your terminal, use the following command to create a directory called `my-express-project` including the files of this example:
+To run the web app locally
 
-```bash
-now init express my-express-project
-```
+- Install the following dependencies
+  - Install Node.js
+  - Run `npm install` or `yarn install` to install Express.js and other dependencies
+- Run the app by running `npm run dev` or `yarn dev`
 
-Then, `cd` into your new project's directory (with `cd my-express-project`).
+## Contributing
 
-You now have a project, ready to go into development, staging, or production with Now. Your next step is up to you. Try one of the following:
+1. Fork it!
+2. Create your feature branch: `git checkout -b my-new-feature`
+3. Commit your changes: `git commit -am 'Add some feature'`
+4. Push to the branch: `git push origin my-new-feature`
+5. Submit a pull request :D
 
-#### Local Development
+## History
 
-Using Now CLI, as you did to initialize this project, you can use the following command from your terminal to start a development environment locally which replicates the production environment on Now so you can test your new project:
+- 1.0.0
+  - Migrated codebase from Flask on Python to Express.js on Node.js. Project deployed to https://mdiner.now.sh
+- 0.3.2
+  - Deployed code to Digital Ocean and linked to free domain https://www.mdiner.ml (for a year)
+- 0.3.1
+  - Made UI more responsive to screen sizes
+- 0.3.0
+  - Got inspiration from @wenhoong's School of Information project and implemented caching in MDiningScraper to avoid overloading the MDining server and to improve runtime
+- 0.2.1
+  - Revamped user interface with the help of a friend who did a mockup on Sketch
+- 0.2.0
+  - Succesfully built barebones user interface on Flask and deployed to Heroku
+  - Reverted to non-threading algorithm because Heroku's free tier doesn't support threading well
+- 0.1.1
+  - Experimented with threading to speed up results
+  - Threading drastically reduces runtime when running command line interface locally
+- 0.1.0
+  - Succesfully built a webscraper with Beautiful Soup to search dining halls for desired food and return results in a command line interface
 
-```bash
-now dev
-```
+## License
 
-#### Automatic Deployments with Git
-
-Using either [Now for GitHub](https://zeit.co/github) or [Now for GitLab](https://zeit.co/gitlab), you can push this project to a Git repository and it will deploy automatically.
-
-If on anything other than the default branch, with each push your project will be deployed, automatically, to a unique staging URL.
-
-If pushing or merging to the default branch, your project will be deployed and aliased in a production environment, automatically.
-
-Read more about the ZEIT Now Git Integrations:
-
-- [Now for GitHub](https://zeit.co/docs/v2/integrations/now-for-github/)
-- [Now for GitLab](https://zeit.co/docs/v2/integrations/now-for-gitlab/)
-
-#### Deploying from Your Terminal
-
-Using [Now CLI](https://zeit.co/download), you can also deploy to both [staging](https://zeit.co/docs/v2/domains-and-aliases/aliasing-a-deployment#staging) and [production](https://zeit.co/docs/v2/domains-and-aliases/aliasing-a-deployment#production) environments from your terminal.
-
-For a staging deployment, you can use the following one-word command:
-
-```bash
-now
-```
-
-Then, for production, including automatic aliasing, you can use the following:
-
-```bash
-now --target production
-```
-
-For more information on deploying, see the [Deployment Basics documentation](https://zeit.co/docs/v2/deployments/basics#introducing-a-build-step).
-
-## Configuration Breakdown
-
-This example contains a `now.json` file which instructs Now how to treat this project when developing locally and deploying.
-
-```json
-{
-  "version": 2,
-  "name": "my-express-project",
-  "builds": [
-    { "src": "www/**/*", "use": "@now/static" },
-    { "src": "api/**/*.js", "use": "@now/node" }
-  ],
-  "routes": [{ "src": "/", "dest": "www/index.html" }]
-}
-```
-
-The above instructs Now with:
-
-- The [`version` property](https://zeit.co/docs/v2/deployments/configuration#version), specifying the latest Now 2.0 Platform version.
-- The [`name` property](https://zeit.co/docs/v2/deployments/configuration#name), setting the name for the deployment.
-- The [`builds` property](https://zeit.co/docs/v2/deployments/configuration#builds), allowing Now to use [the @now/node Builder](https://zeit.co/docs/v2/deployments/official-builders/node-js-now-node/) with a specific source target.
-- The [`routes` property](https://zeit.co/docs/v2/deployments/configuration#routes), instructing Now to route the user to the `www/index.html` file when requesting the root path.
-
-For more information on configuring Now, see the [Configuration documentation](https://zeit.co/docs/v2/deployments/configuration).
-
-## Resources
-
-Learn more about the ZEIT Now platform from [our documentation](https://zeit.co/docs), including:
-
-- [More information on deploying Express projects](https://zeit.co/docs/v2/deployments/official-builders/node-js-now-node/) and some technical details.
-- [More information on the platform itself](https://zeit.co/docs), including [domains and aliasing](https://zeit.co/docs/v2/domains-and-aliases/introduction/) and [local development](https://zeit.co/docs/v2/development/basics/).
+This project is licensed under the Apache License 2.0 - see the [LICENSE.md](LICENSE.md) file for details
