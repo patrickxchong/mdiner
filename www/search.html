@@ -75,16 +75,7 @@
     <br />
     <br />
     <div id="output">
-      <div class="food-wrapper">
-        <!-- {% for item in results %}
-        <a href="{{item.0}}" target="_blank" class="food">
-          <p>{{item[1]}}</p>
-          <p>{{item[2]}}</p>
-          <p>{{item[3]}}</p>
-          <p>{{item[4]}}</p>
-        </a>
-        {% endfor %} -->
-      </div>
+      <div class="food-wrapper"></div>
     </div>
     <script>
       function createDateAsUTC(date) {
@@ -124,30 +115,35 @@
       while (loop <= end) {
         let date = loop.toISOString().slice(0, 10);
         console.log(date);
-
-        fetch(`/api/menu?item=${item}&date=${date}`)
-          .then(response => {
-            if (!response.ok) {
-              throw new Error("Network response was not ok");
-            }
-            return response.json();
-          })
-          .then(json => {
-            results = results.concat(json);
-            document.querySelector(".food-wrapper").innerHTML = results.map(
-              result => {
-                return `<a href="${result.url}" target="_blank" class="food">
-          <p>${result.date}</p>
-          <p>${result.location}</p>
-          <p>${result.meal}</p>
-          <p>${result.name}</p>
-        </a>`;
+        for (let i = 0; i < 2; ++i) {
+          fetch(`/api/menu?item=${item}&date=${date}&page=${i}`)
+            .then(response => {
+              if (!response.ok) {
+                throw new Error("Network response was not ok");
               }
-            ).join("");
-          })
-          .catch(error => {
-            console.error("There has been a problem with Fetch:", error);
-          });
+              return response.json();
+            })
+            .then(json => {
+              results = results.concat(json);
+              console.log(JSON.stringify(results));
+              document.querySelector(".food-wrapper").innerHTML = results
+                .sort((a, b) => {
+                  return a.date.localeCompare(b.date);
+                })
+                .map(result => {
+                  return `<a href="${result.url}" target="_blank" class="food">
+            <p>${result.date}</p>
+            <p>${result.location}</p>
+            <p>${result.meal}</p>
+            <p>${result.name}</p>
+          </a>`;
+                })
+                .join("");
+            })
+            .catch(error => {
+              console.error("There has been a problem with Fetch:", error);
+            });
+        }
 
         let newDate = loop.setDate(loop.getDate() + 1);
         loop = new Date(newDate);

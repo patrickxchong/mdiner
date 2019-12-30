@@ -9,7 +9,7 @@ const DINING_LOCATIONS = [
   "South Quad Dining Hall",
   "North Quad Dining Hall",
   "Markley Dining Hall",
-  "Martha Cook Dining Hall",
+  // "Martha Cook Dining Hall",
   "Twigs at Oxford"
 ];
 
@@ -20,7 +20,7 @@ const DINING_LOCATIONS_URLS = {
   "South Quad Dining Hall": "south-quad",
   "North Quad Dining Hall": "north-quad",
   "Markley Dining Hall": "markley",
-  "Martha Cook Dining Hall": "select-access/martha-cook",
+  // "Martha Cook Dining Hall": "select-access/martha-cook",
   "Twigs at Oxford": "twigs-at-oxford"
 };
 
@@ -49,7 +49,7 @@ module.exports = app => {
       if (req.query.page === "0") {
         diningLocations = diningLocations.slice(0, 4);
       } else if (req.query.page === "1") {
-        diningLocations = diningLocations.slice(4, 8);
+        diningLocations = diningLocations.slice(4, 7);
       }
     }
     console.log(diningLocations);
