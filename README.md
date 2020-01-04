@@ -51,4 +51,4 @@ To run the web app locally
 
 ## License
 
-This project is licensed under the Apache License 2.0 - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the GNU General Public License v3.0 or later - see the [COPYING](COPYING) file for details
