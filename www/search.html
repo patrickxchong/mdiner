@@ -112,14 +112,17 @@
       let item = urlParams.get("item");
 
       let loop = new Date(start);
+      let count = 0;
+
       while (loop <= end) {
         let date = loop.toISOString().slice(0, 10);
         console.log(date);
-        for (let i = 0; i < 2; ++i) {
-          fetch(`/api/menu?item=${item}&date=${date}&page=${i}`)
+        for (let i = 0; i < 7; ++i) {
+          ++count;
+          fetch(`/api/menu?item=${item}&date=${date}&location=${i}`)
             .then(response => {
               if (!response.ok) {
-                throw new Error("Network response was not ok");
+                throw Error(response.statusText);
               }
               return response.json();
             })
@@ -139,16 +142,25 @@
           </a>`;
                 })
                 .join("");
+
+                // End condition
+                if (--count === 0) {
+                  document.querySelector(".lds-circle").style.display = "none";
+                }
             })
             .catch(error => {
-              console.error("There has been a problem with Fetch:", error);
+              console.error("There has been a problem with Fetch:");
+              console.log(error);
+              // End condition
+              if (--count === 0) {
+                document.querySelector(".lds-circle").style.display = "none";
+              }
             });
         }
 
         let newDate = loop.setDate(loop.getDate() + 1);
         loop = new Date(newDate);
       }
-      document.querySelector(".lds-circle").style.display = "none";
     </script>
   </body>
 </html>
