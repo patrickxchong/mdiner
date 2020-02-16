@@ -24,18 +24,20 @@ const DINING_LOCATIONS_URLS = {
   "Twigs at Oxford": "twigs-at-oxford"
 };
 
+const TRAITS = ['vegetarian', 'glutenfree', 'mhealthy', 'vegan', 'halal', 'spicy', 'kosher']
+
 module.exports = app => {
   app.get("/api/menu", async (req, res) => {
     if (!req.query.date) {
       res.status(400).send({
-        Error: "Date not defined."
+        Error: "date query not defined."
       });
       return;
     }
 
     if (!req.query.item) {
       res.status(400).send({
-        Error: "Item not defined."
+        Error: "item query not defined."
       });
       return;
     }
@@ -77,7 +79,7 @@ module.exports = app => {
         });
 
         // Save menu in the database
-        await menuDB.save(function(err, menu) {
+        await menuDB.save(function (err, menu) {
           if (err) {
             console.log(err);
           }
@@ -93,13 +95,19 @@ module.exports = app => {
               if (Array.isArray(station.menuitem)) {
                 for (let food of station.menuitem) {
                   // menu[meal.name].push(food.name);
+                  let name = food.name;
+                  if (food.trait) {
+                    console.log(Object.keys(food.trait));
+                    name += "," + Object.keys(food.trait).join(",")
+                  }
                   if (
-                    food.name.search(new RegExp(req.query.item, "ig")) != -1
+                    name.search(new RegExp(req.query.item, "ig")) != -1
                   ) {
                     results.push({
                       url: `https://dining.umich.edu/menus-locations/dining-halls/${DINING_LOCATIONS_URLS[location]}/?menuDate=${req.query.date}`,
                       date: req.query.date,
                       location,
+                      trait: food.trait,
                       meal: meal.name,
                       name: food.name
                     });
