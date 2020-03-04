@@ -1,224 +1,242 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>The MDiner</title>
-    <meta
-      name="description"
-      content="A simple app that tells you when and where the dining hall serves what you would like!"
-    />
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="shortcut icon" href="/static/favicon.png" />
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.0.10/css/all.css"
-      integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg"
-      crossorigin="anonymous"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=Bitter|Quicksand"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" type="text/css" href="/static/home.css" />
-  </head>
 
-  <body>
-    <div>
-      <h1>
-        The
-        <div id="M">M</div>
-        Diner
-      </h1>
-      <p>What do you feel like eating?</p>
-      <form id="food-form" autocomplete="off">
-        <div class="food">
-          <p>I want</p>
-          <div class="autocomplete">
-            <input
-              type="text"
-              id="food_input"
-              name="search"
-              value="Chocolate Glazed Donuts"
-            />
-          </div>
-          <i
-            class="far fa-times-circle"
-            onclick="(function() { document.getElementById('food_input').value = ''; }) (); return false;"
-          ></i>
+<head>
+  <meta charset="UTF-8" />
+  <title>The MDiner</title>
+  <meta name="description"
+    content="A simple app that tells you when and where the dining hall serves what you would like!" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="shortcut icon" href="/static/favicon.png" />
+  <link rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.0.10/css/all.css"
+    integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg"
+    crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/css?family=Bitter|Quicksand"
+    rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="/static/home.css" />
+</head>
+
+<body>
+  <div>
+    <h1>
+      The
+      <div id="M">M</div>
+      Diner
+    </h1>
+    <p>What do you feel like eating?</p>
+    <form id="food-form" autocomplete="off">
+      <div class="food">
+        <p>I want</p>
+        <div class="autocomplete">
+          <input type="text" id="food_input" name="search"
+            value="Chocolate Glazed Donuts" />
         </div>
-        <div class="date">
-          <p>from <input type="date" id="start_input" name="start" /></p>
-          <p>
-            to
-            <input type="date" id="end_input" name="end" />
-          </p>
-        </div>
-        <button type="submit" id="submit_input">
-          <span class="far fa-check-circle"></span>
-        </button>
-      </form>
-      <script type="text/javascript">
-        document
-          .getElementById("food-form")
-          .addEventListener("submit", function(e) {
-            e.preventDefault();
-            window.location.href = `/search?item=${
-              document.getElementById("food_input").value
+        <i class="far fa-times-circle"
+          onclick="(function() { document.getElementById('food_input').value = ''; }) (); return false;"></i>
+      </div>
+      <div class="date">
+        <p>from <input type="date" id="start_input" name="start" /></p>
+        <p>
+          to
+          <input type="date" id="end_input" name="end" />
+        </p>
+      </div>
+      <button type="submit" id="submit_input">
+        <span class="far fa-check-circle"></span>
+      </button>
+    </form>
+    <script type="text/javascript">
+      document
+        .getElementById("food-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          window.location.href = `/search?item=${
+            document.getElementById("food_input").value
             }&start=${document.getElementById("start_input").value}&end=${
-              document.getElementById("end_input").value
+            document.getElementById("end_input").value
             }`;
-          });
-        document.addEventListener("keydown", function(e) {
-          var key = e.which || e.keyCode;
-          if (key === 13) {
-            // 13 is enter
-            document.getElementById("submit_input").click();
+        });
+      document.addEventListener("keydown", function (e) {
+        var key = e.which || e.keyCode;
+        if (key === 13) {
+          // 13 is enter
+          document.getElementById("submit_input").click();
+        }
+      });
+
+      Date.prototype.toDateInputValue = function () {
+        var local = new Date(this);
+        local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
+        return local.toJSON().slice(0, 10);
+      };
+
+      document.getElementById(
+        "start_input"
+      ).value = new Date().toDateInputValue();
+      var date = new Date();
+      date.setDate(date.getDate() + 3);
+      document.getElementById("end_input").value = date.toDateInputValue();
+    </script>
+    <script>
+      var foodPrompts = [
+        "Chicken",
+        "Beef",
+        "Pork",
+        "Mushroom",
+        "Ribs",
+        "Soup"
+      ];
+
+      function autocomplete(inp, arr) {
+        /*the autocomplete function takes two arguments,
+      the text field element and an array of possible autocompleted values:*/
+        var currentFocus;
+        /*execute a function when someone writes in the text field:*/
+        inp.addEventListener("input", function (e) {
+          var a,
+            b,
+            i,
+            val = this.value;
+          /*close any already open lists of autocompleted values*/
+          closeAllLists();
+          if (!val) {
+            return false;
+          }
+          currentFocus = -1;
+          /*create a DIV element that will contain the items (values):*/
+          a = document.createElement("DIV");
+          a.setAttribute("id", this.id + "autocomplete-list");
+          a.setAttribute("class", "autocomplete-items");
+          /*append the DIV element as a child of the autocomplete container:*/
+          this.parentNode.appendChild(a);
+          /*for each item in the array...*/
+          for (i = 0; i < arr.length; i++) {
+            /*check if the item starts with the same letters as the text field value:*/
+            if (
+              arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()
+            ) {
+              /*create a DIV element for each matching element:*/
+              b = document.createElement("DIV");
+              /*make the matching letters bold:*/
+              b.innerHTML =
+                "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+              b.innerHTML += arr[i].substr(val.length);
+              /*insert a input field that will hold the current array item's value:*/
+              b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+              /*execute a function when someone clicks on the item value (DIV element):*/
+              b.addEventListener("click", function (e) {
+                /*insert the value for the autocomplete text field:*/
+                inp.value = this.getElementsByTagName("input")[0].value;
+                /*close the list of autocompleted values,
+              (or any other open lists of autocompleted values:*/
+                closeAllLists();
+              });
+              a.appendChild(b);
+            }
+          }
+        });
+        /*execute a function presses a key on the keyboard:*/
+        inp.addEventListener("keydown", function (e) {
+          var x = document.getElementById(this.id + "autocomplete-list");
+          if (x) x = x.getElementsByTagName("div");
+          if (e.keyCode == 40) {
+            /*If the arrow DOWN key is pressed,
+          increase the currentFocus variable:*/
+            currentFocus++;
+            /*and and make the current item more visible:*/
+            addActive(x);
+          } else if (e.keyCode == 38) {
+            //up
+            /*If the arrow UP key is pressed,
+          decrease the currentFocus variable:*/
+            currentFocus--;
+            /*and and make the current item more visible:*/
+            addActive(x);
+          } else if (e.keyCode == 13) {
+            /*If the ENTER key is pressed, prevent the form from being submitted,*/
+            e.preventDefault();
+            if (currentFocus > -1) {
+              /*and simulate a click on the "active" item:*/
+              if (x) x[currentFocus].click();
+            }
           }
         });
 
-        Date.prototype.toDateInputValue = function() {
-          var local = new Date(this);
-          local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
-          return local.toJSON().slice(0, 10);
-        };
-
-        document.getElementById(
-          "start_input"
-        ).value = new Date().toDateInputValue();
-        var date = new Date();
-        date.setDate(date.getDate() + 3);
-        document.getElementById("end_input").value = date.toDateInputValue();
-      </script>
-      <script>
-        var foodPrompts = [
-          "Chicken",
-          "Beef",
-          "Pork",
-          "Mushroom",
-          "Ribs",
-          "Soup"
-        ];
-
-        function autocomplete(inp, arr) {
-          /*the autocomplete function takes two arguments,
-        the text field element and an array of possible autocompleted values:*/
-          var currentFocus;
-          /*execute a function when someone writes in the text field:*/
-          inp.addEventListener("input", function(e) {
-            var a,
-              b,
-              i,
-              val = this.value;
-            /*close any already open lists of autocompleted values*/
-            closeAllLists();
-            if (!val) {
-              return false;
-            }
-            currentFocus = -1;
-            /*create a DIV element that will contain the items (values):*/
-            a = document.createElement("DIV");
-            a.setAttribute("id", this.id + "autocomplete-list");
-            a.setAttribute("class", "autocomplete-items");
-            /*append the DIV element as a child of the autocomplete container:*/
-            this.parentNode.appendChild(a);
-            /*for each item in the array...*/
-            for (i = 0; i < arr.length; i++) {
-              /*check if the item starts with the same letters as the text field value:*/
-              if (
-                arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()
-              ) {
-                /*create a DIV element for each matching element:*/
-                b = document.createElement("DIV");
-                /*make the matching letters bold:*/
-                b.innerHTML =
-                  "<strong>" + arr[i].substr(0, val.length) + "</strong>";
-                b.innerHTML += arr[i].substr(val.length);
-                /*insert a input field that will hold the current array item's value:*/
-                b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
-                /*execute a function when someone clicks on the item value (DIV element):*/
-                b.addEventListener("click", function(e) {
-                  /*insert the value for the autocomplete text field:*/
-                  inp.value = this.getElementsByTagName("input")[0].value;
-                  /*close the list of autocompleted values,
-                (or any other open lists of autocompleted values:*/
-                  closeAllLists();
-                });
-                a.appendChild(b);
-              }
-            }
-          });
-          /*execute a function presses a key on the keyboard:*/
-          inp.addEventListener("keydown", function(e) {
-            var x = document.getElementById(this.id + "autocomplete-list");
-            if (x) x = x.getElementsByTagName("div");
-            if (e.keyCode == 40) {
-              /*If the arrow DOWN key is pressed,
-            increase the currentFocus variable:*/
-              currentFocus++;
-              /*and and make the current item more visible:*/
-              addActive(x);
-            } else if (e.keyCode == 38) {
-              //up
-              /*If the arrow UP key is pressed,
-            decrease the currentFocus variable:*/
-              currentFocus--;
-              /*and and make the current item more visible:*/
-              addActive(x);
-            } else if (e.keyCode == 13) {
-              /*If the ENTER key is pressed, prevent the form from being submitted,*/
-              e.preventDefault();
-              if (currentFocus > -1) {
-                /*and simulate a click on the "active" item:*/
-                if (x) x[currentFocus].click();
-              }
-            }
-          });
-
-          function addActive(x) {
-            /*a function to classify an item as "active":*/
-            if (!x) return false;
-            /*start by removing the "active" class on all items:*/
-            removeActive(x);
-            if (currentFocus >= x.length) currentFocus = 0;
-            if (currentFocus < 0) currentFocus = x.length - 1;
-            /*add class "autocomplete-active":*/
-            x[currentFocus].classList.add("autocomplete-active");
-          }
-
-          function removeActive(x) {
-            /*a function to remove the "active" class from all autocomplete items:*/
-            for (var i = 0; i < x.length; i++) {
-              x[i].classList.remove("autocomplete-active");
-            }
-          }
-
-          function closeAllLists(elmnt) {
-            /*close all autocomplete lists in the document,
-          except the one passed as an argument:*/
-            var x = document.getElementsByClassName("autocomplete-items");
-            for (var i = 0; i < x.length; i++) {
-              if (elmnt != x[i] && elmnt != inp) {
-                x[i].parentNode.removeChild(x[i]);
-              }
-            }
-          }
-          /*execute a function when someone clicks in the document:*/
-          document.addEventListener("click", function(e) {
-            closeAllLists(e.target);
-          });
+        function addActive(x) {
+          /*a function to classify an item as "active":*/
+          if (!x) return false;
+          /*start by removing the "active" class on all items:*/
+          removeActive(x);
+          if (currentFocus >= x.length) currentFocus = 0;
+          if (currentFocus < 0) currentFocus = x.length - 1;
+          /*add class "autocomplete-active":*/
+          x[currentFocus].classList.add("autocomplete-active");
         }
-        autocomplete(document.getElementById("food_input"), foodPrompts);
-      </script>
-    </div>
-    <div class="footer">
-      <p>
-        <a href="https://www.facebook.com/PatrickChongJinHua" target="_blank"
-          >About
-        </a>
-        | <a href="mailto:pcjh@umich.edu"> Contact </a> |
-        <a>© Patrick Chong</a>
-      </p>
-    </div>
-  </body>
+
+        function removeActive(x) {
+          /*a function to remove the "active" class from all autocomplete items:*/
+          for (var i = 0; i < x.length; i++) {
+            x[i].classList.remove("autocomplete-active");
+          }
+        }
+
+        function closeAllLists(elmnt) {
+          /*close all autocomplete lists in the document,
+        except the one passed as an argument:*/
+          var x = document.getElementsByClassName("autocomplete-items");
+          for (var i = 0; i < x.length; i++) {
+            if (elmnt != x[i] && elmnt != inp) {
+              x[i].parentNode.removeChild(x[i]);
+            }
+          }
+        }
+        /*execute a function when someone clicks in the document:*/
+        document.addEventListener("click", function (e) {
+          closeAllLists(e.target);
+        });
+      }
+      autocomplete(document.getElementById("food_input"), foodPrompts);
+    </script>
+  </div>
+  <div class="footer">
+    <p>
+      <a href="https://www.facebook.com/PatrickChongJinHua"
+        target="_blank">About
+      </a>
+      | <a href="mailto:pcjh@umich.edu"> Contact </a> |
+      <a>© Patrick Chong</a>
+    </p>
+  </div>
+  <!-- Start of Async Drift Code -->
+  <script>
+    "use strict";
+
+    !function () {
+      var t = window.driftt = window.drift = window.driftt || [];
+      if (!t.init) {
+        if (t.invoked) return void (window.console && console.error && console.error("Drift snippet included twice."));
+        t.invoked = !0, t.methods = ["identify", "config", "track", "reset", "debug", "show", "ping", "page", "hide", "off", "on"],
+          t.factory = function (e) {
+            return function () {
+              var n = Array.prototype.slice.call(arguments);
+              return n.unshift(e), t.push(n), t;
+            };
+          }, t.methods.forEach(function (e) {
+            t[e] = t.factory(e);
+          }), t.load = function (t) {
+            var e = 3e5, n = Math.ceil(new Date() / e) * e, o = document.createElement("script");
+            o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src = "https://js.driftt.com/include/" + n + "/" + t + ".js";
+            var i = document.getElementsByTagName("script")[0];
+            i.parentNode.insertBefore(o, i);
+          };
+      }
+    }();
+    drift.SNIPPET_VERSION = '0.3.1';
+    drift.load('wpeshxtkinmm');
+  </script>
+  <!-- End of Async Drift Code -->
+</body>
+
 </html>
