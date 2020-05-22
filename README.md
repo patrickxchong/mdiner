@@ -50,7 +50,7 @@ To run the web app locally
   - Succesfully built a webscraper with Beautiful Soup to search dining halls for desired food and return results in a command line interface
 
 ## Buy me a coffee (or bubble tea)
-[![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/patrickchong)
+[![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/patrickxchong)
 
 
 ## License

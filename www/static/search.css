@@ -40,7 +40,7 @@ h1 {
 #M {
   color: #FFCB05;
   padding: 0px 2px;
-  margin-left: 1.4vw;
+  margin-left: 1rem;
 }
 
 a {
@@ -91,3 +91,27 @@ a {
   margin-bottom: 2vw;
 }
 
+.footer {
+  text-align: center;
+  align-self: end;
+  font-size: 1rem;
+  width: 100%;
+}
+
+.footer a {
+  color: white;
+  margin: 0px 10px;
+}
+.footer p {
+  margin-bottom: 1vh;
+  text-align: center;
+}
+
+.footer a:first-child, .footer a:last-child {
+  flex: 1;
+  text-align: start;
+}
+
+.footer a:first-child {
+  text-align: end;
+}
