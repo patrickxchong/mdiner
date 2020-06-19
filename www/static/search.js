@@ -45,7 +45,7 @@ function search() {
     console.log(date);
     for (let i = 0; i < 7; ++i) {
       ++count;
-      fetch(`http://localhost:3000/api/menu?item=${item}&date=${date}&location=${i}`)
+      fetch(`https://mdiner.patrickxchong.com/api/menu?item=${item}&date=${date}&location=${i}`)
         .then(response => {
           if (!response.ok) {
             throw Error(response.statusText);
