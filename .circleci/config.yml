@@ -64,7 +64,7 @@ jobs:
           command: sudo chmod +x ./android/gradlew
       - run:
           name: Download Dependencies
-          command: ./android/gradlew androidDependencies
+          command: cd android && ./gradlew androidDependencies
       - save_cache:
           paths:
             - ~/.gradle
@@ -72,20 +72,20 @@ jobs:
       - run: # https://developer.android.com/studio/build/building-cmdline This creates an APK named module_name-debug.apk in project_name/module_name/build/outputs/apk/
           name: Build debug APK and release APK
           command: |
-            ./android/gradlew :app:assembleDebug
-            ./android/gradlew :app:assembleDebugAndroidTest
+            cd android && ./gradlew :app:assembleDebug
+            cd android && ./gradlew :app:assembleDebugAndroidTest
       - run:
           name: Run Tests
-          command: ./android/gradlew lint test
+          command: cd android && ./gradlew lint test
       - store_artifacts: # for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
-          path: app/build/reports
+          path: android/app/build/reports
           destination: reports
       - store_artifacts: # for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
-          path: app/build/outputs/apk
+          path: android/app/build/outputs/apk
       - store_artifacts: # for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
-          path: app/src/main/assets/public
+          path: android/app/src/main/assets/public
       - store_test_results: # for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
-          path: app/build/test-results
+          path: android/app/build/test-results
 
   publish-github-release:
     docker:
