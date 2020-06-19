@@ -4,12 +4,12 @@ workflows:
   build-test-and-deploy:
     jobs:
       - build_yarn
-      - build_capacitor:
-          requires:
-            - build_yarn
+      # - build_capacitor:
+      #     requires:
+      #       - build_yarn
       - build_android:
           requires:
-            - build_capacitor
+            - build_yarn
       - publish-github-release:
           requires:
             - build_android
@@ -30,6 +30,12 @@ jobs:
           key: yarn-modules-{{ checksum "yarn.lock" }}
           paths:
             - node_modules
+      - run: npx cap add android
+      - run: npx cap sync
+      - persist_to_workspace:
+          root: android
+          paths:
+            - ./*
   build_capacitor:
     docker:
       - image: circleci/node:13.5.0
