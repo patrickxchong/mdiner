@@ -80,12 +80,12 @@ jobs:
             - ~/.gradle
           key: jars-{{ checksum "android/build.gradle" }}-{{ checksum  "android/build.gradle" }}
       - run: # https://developer.android.com/studio/build/building-cmdline This creates an APK named module_name-debug.apk in project_name/module_name/build/outputs/apk/
-          name: Build debug APK and release APK
+          name: Build debug APK and release APK 
           command: |
             cd android
             ./gradlew :app:assembleDebug
-            ./gradlew :app:assembleDebugAndroidTest
             ./gradlew :app:assembleRelease
+            ./gradlew :app:assembleDebugAndroidTest
       - run:
           name: Run Tests
           command: cd android && ./gradlew lint test
@@ -112,4 +112,6 @@ jobs:
       - run:
           name: "Publish Release on GitHub"
           command: |
+            mv android/apk/debug/app-debug.apk android/apk
+            mv android/apk/release/app-release-unsigned.apk android/apk
             ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${CIRCLE_BUILD_NUM} ./android/apk/
