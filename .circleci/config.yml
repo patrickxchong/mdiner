@@ -3,50 +3,90 @@ workflows:
   version: 2
   build-test-and-deploy:
     jobs:
-      - build
+      - build_yarn
+      - build_capacitor:
+          requires:
+            - build_yarn
+      - build_android:
+          requires:
+            - build_capacitor
       - publish-github-release:
           requires:
-            - build
+            - build_android
 
 jobs:
-  build:
-    working_directory: ~/android
+  build_yarn:
+    docker:
+      - image: circleci/node:13.5.0
+    steps:
+      - checkout
+      - restore_cache:
+          name: Restore Yarn Package Cache
+          keys:
+            - yarn-modules-{{ checksum "yarn.lock" }}
+      - run: ls node_modules || yarn install --frozen-lockfile
+      - save_cache:
+          name: Save Yarn Package Cache
+          key: yarn-modules-{{ checksum "yarn.lock" }}
+          paths:
+            - node_modules
+  build_capacitor:
+    docker:
+      - image: circleci/node:13.5.0
+    steps:
+      - checkout
+      - restore_cache:
+          name: Restore Yarn Package Cache
+          keys:
+            - yarn-modules-{{ checksum "yarn.lock" }}
+      - run: yarn install --frozen-lockfile
+      - run: npx cap add android
+      - run: npx cap sync
+      - persist_to_workspace:
+          root: android
+          paths:
+            - ./*
+
+  build_android:
     docker:
       - image: circleci/android:api-25-alpha
     environment:
       JVM_OPTS: -Xmx3200m
     steps:
       - checkout
+      - attach_workspace:
+          # Must be absolute path or relative path from working_directory
+          at: android
       # - restore_cache:
-      #     key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
-#      - run:
-#         name: Chmod permissions #if permission for Gradlew Dependencies fail, use this.
-#         command: sudo chmod +x ./gradlew
+      #     key: jars-{{ checksum "android/build.gradle" }}-{{ checksum  "android/build.gradle" }}
+      - run:
+          name: Chmod permissions #if permission for Gradlew Dependencies fail, use this.
+          command: sudo chmod +x ./android/gradlew
       - run:
           name: Download Dependencies
-          command: ./gradlew androidDependencies
+          command: ./android/gradlew androidDependencies
       - save_cache:
           paths:
             - ~/.gradle
-          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+          key: jars-{{ checksum "android/build.gradle" }}-{{ checksum  "android/build.gradle" }}
       - run: # https://developer.android.com/studio/build/building-cmdline This creates an APK named module_name-debug.apk in project_name/module_name/build/outputs/apk/
           name: Build debug APK and release APK
           command: |
-            ./gradlew :app:assembleDebug
-            ./gradlew :app:assembleDebugAndroidTest
+            ./android/gradlew :app:assembleDebug
+            ./android/gradlew :app:assembleDebugAndroidTest
       - run:
           name: Run Tests
-          command: ./gradlew lint test
-      - store_artifacts: # for display in Artifacts: https://circleci.com/docs/2.0/artifacts/ 
+          command: ./android/gradlew lint test
+      - store_artifacts: # for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
           path: app/build/reports
           destination: reports
-      - store_artifacts: # for display in Artifacts: https://circleci.com/docs/2.0/artifacts/ 
+      - store_artifacts: # for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
           path: app/build/outputs/apk
-      - store_artifacts: # for display in Artifacts: https://circleci.com/docs/2.0/artifacts/ 
+      - store_artifacts: # for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
           path: app/src/main/assets/public
       - store_test_results: # for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
           path: app/build/test-results
-          
+
   publish-github-release:
     docker:
       - image: cibuilds/github:0.10
