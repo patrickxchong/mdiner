@@ -57,6 +57,10 @@ jobs:
       - attach_workspace:
           # Must be absolute path or relative path from working_directory
           at: android
+      - restore_cache:
+          name: Restore Yarn Package Cache
+          keys:
+            - yarn-modules-{{ checksum "yarn.lock" }}
       # - restore_cache:
       #     key: jars-{{ checksum "android/build.gradle" }}-{{ checksum  "android/build.gradle" }}
       - run:
