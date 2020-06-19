@@ -54,18 +54,18 @@ module.exports = app => {
         diningLocations = diningLocations.slice(4, 7);
       }
     }
-    console.log(diningLocations);
+    // console.log(diningLocations);
 
     let results = [];
     for (let location of diningLocations) {
       let id = `${req.query.date},${location.replace(/\s/g, "")}`;
-      console.log(id);
+      // console.log(id);
       let meals = await Menu.findOne({ id }).exec();
       if (meals !== undefined && meals !== null) {
-        console.log("Found in DB");
+        // console.log("Found in DB");
         meals = JSON.parse(meals.meals);
       } else {
-        console.log("Not found in DB");
+        // console.log("Not found in DB");
         let body = await request(
           `http://api.studentlife.umich.edu/menu/xml2print.php?controller=print&view=json&location=${location}&date=${req.query.date}"`
         );
@@ -81,9 +81,9 @@ module.exports = app => {
         // Save menu in the database
         await menuDB.save(function (err, menu) {
           if (err) {
-            console.log(err);
+            // console.log(err);
           }
-          // console.log(menu);
+          console.log(menu);
         });
       }
       // let menu = [];
@@ -97,7 +97,7 @@ module.exports = app => {
                   // menu[meal.name].push(food.name);
                   let name = food.name;
                   if (food.trait) {
-                    console.log(Object.keys(food.trait));
+                    // console.log(Object.keys(food.trait));
                     name += "," + Object.keys(food.trait).join(",")
                   }
                   if (

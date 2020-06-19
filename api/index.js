@@ -5,10 +5,17 @@ const express = require("express");
 const helmet = require("helmet");
 const request = require("request");
 const path = require("path");
+const cors = require("cors");
 
 const app = express();
 
 app.use(helmet());
+app.use(cors());
+
+app.use((req, res, next) => {
+  consola.info(`header origin: ${req.headers.origin}`);
+  next();
+});
 
 // ==== Mongoose ====
 const mongoose = require("mongoose");
@@ -32,7 +39,7 @@ require("./routes/menu.routes")(app);
 app.get("/api", (req, res) => {
   request(
     "http://api.studentlife.umich.edu/menu/xml2print.php?controller=print&view=json&location=Bursley%20Dining%20Hall",
-    function(error, response, body) {
+    function (error, response, body) {
       console.error("error:", error); // Print the error if one occurred
       console.log("statusCode:", response && response.statusCode); // Print the response status code if a response was received
 
@@ -76,7 +83,7 @@ app.get("/api/findAll", (req, res) => {
     });
 });
 
-app.get("/search", function(req, res) {
+app.get("/search", function (req, res) {
   res.sendFile(path.join(__dirname, "..", "/www/search.html"));
   return;
 });
