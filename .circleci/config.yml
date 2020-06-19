@@ -82,8 +82,10 @@ jobs:
       - run: # https://developer.android.com/studio/build/building-cmdline This creates an APK named module_name-debug.apk in project_name/module_name/build/outputs/apk/
           name: Build debug APK and release APK
           command: |
-            cd android && ./gradlew :app:assembleDebug
-            cd android && ./gradlew :app:assembleDebugAndroidTest
+            cd android
+            ./gradlew :app:assembleDebug
+            ./gradlew :app:assembleDebugAndroidTest
+            ./gradlew :app:assembleRelease
       - run:
           name: Run Tests
           command: cd android && ./gradlew lint test
@@ -92,19 +94,23 @@ jobs:
           destination: reports
       - store_artifacts: # for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
           path: android/app/build/outputs/apk
-      - store_artifacts: # for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
-          path: android/app/src/main/assets/public
+      # - store_artifacts: # for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
+      #     path: android/app/src/main/assets/public
       - store_test_results: # for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
           path: android/app/build/test-results
+      - persist_to_workspace:
+          root: android/app/build/outputs/apk
+          paths:
+            - ./*
 
   publish-github-release:
     docker:
       - image: cibuilds/github:0.10
     steps:
       - attach_workspace:
-          at: ./artifacts
+          at: ./apk
       - run:
           name: "Publish Release on GitHub"
           command: |
             VERSION=$(my-binary --version)
-            ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${VERSION} ./artifacts/
+            ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${CIRCLE_SHA1} ./apk/
