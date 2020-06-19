@@ -1,5 +1,5 @@
 {
-  "appId": "com.mdiner.app",
+  "appId": "com.patrickxchong.mdiner",
   "appName": "MDiner",
   "bundledWebRuntime": false,
   "npmClient": "yarn",
