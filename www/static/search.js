@@ -42,7 +42,7 @@ function search() {
 
   while (loop <= end) {
     let date = loop.toISOString().slice(0, 10);
-    console.log(date);
+    // console.log(date);
     for (let i = 0; i < 7; ++i) {
       ++count;
       fetch(`https://mdiner.patrickxchong.com/api/menu?item=${item}&date=${date}&location=${i}`)
@@ -54,7 +54,7 @@ function search() {
         })
         .then(json => {
           results = results.concat(json);
-          console.log(JSON.stringify(results));
+          // console.log(JSON.stringify(results));
           document.querySelector(".food-wrapper").innerHTML = results
             .sort((a, b) => {
               return a.date.localeCompare(b.date);

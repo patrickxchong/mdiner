@@ -2,34 +2,36 @@ if (window.location.search) {
   search();
 }
 
-function returnHome() {
-  history.pushState(null, null, '/');
+function showHome() {
   document.getElementById('home').style.display = 'block';
   document.getElementById('search').style.display = 'none';
   document.querySelector('.lds-circle').style.display = 'none';
 }
 
-document.getElementById("returnHome").addEventListener('click', returnHome)
+document.getElementById("returnHome").addEventListener('click', () => {
+  history.pushState({ page_id: 'home' }, null, '/');
+  showHome();
+})
 
 
 document
   .getElementById("food-form")
   .addEventListener("submit", function (e) {
     e.preventDefault();
-    history.pushState(null, null, `/?item=${
+    history.pushState({ page_id: 'search' }, null, `/?item=${
       document.getElementById("food_input").value
       }&start=${document.getElementById("start_input").value}&end=${
       document.getElementById("end_input").value
       }`);
     search()
   });
-document.addEventListener("keydown", function (e) {
-  var key = e.which || e.keyCode;
-  if (key === 13) {
-    // 13 is enter
-    document.getElementById("submit_input").click();
-  }
-});
+// document.addEventListener("keydown", function (e) {
+//   var key = e.which || e.keyCode;
+//   if (key === 13) {
+//     // 13 is enter
+//     document.getElementById("submit_input").click();
+//   }
+// });
 
 Date.prototype.toDateInputValue = function () {
   var local = new Date(this);

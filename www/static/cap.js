@@ -18,10 +18,10 @@ async function showAlert(title, message) {
   });
 }
 
-async function showConfirm() {
+async function showConfirm(title, message) {
   let confirmRet = await Modals.confirm({
-    title: 'Confirm',
-    message: 'Are you sure you\'d like to exit?'
+    title,
+    message
   });
   console.log('Confirm ret', confirmRet);
   return confirmRet.value;
@@ -56,12 +56,25 @@ async function showActions() {
 }
 
 
-showAlert("Hello", "Welcome to the MDiner!");
+window.addEventListener('popstate', function (event) {
+  // Log the state data to the console
+  // console.log(window.history.state);
+  if (!window.location.search) { // if no query string, means at homepage
+    showHome();
+  } else {
+    search();
+  }
+});
+
+showAlert("Hello Friend", "Welcome to the MDiner!");
 
 App.addListener("backButton", async (data) => {
-  showAlert("Alert", JSON.stringify(data));
-  const result = await showConfirm()
-  if (result) {
-    App.exitApp();
+  if (!window.location.search) { // if no query string, means at homepage
+    const result = await showConfirm('Confirm', 'Are you sure you would like to exit?')
+    if (result) {
+      App.exitApp();
+    }
+  } else {
+    window.history.back();
   }
 }) 
