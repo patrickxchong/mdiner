@@ -1,13 +1,15 @@
 {
   "appId": "com.patrickxchong.mdiner",
   "appName": "MDiner",
-  "bundledWebRuntime": false,
+  "bundledWebRuntime": true,
   "npmClient": "yarn",
   "webDir": "www",
   "plugins": {
     "SplashScreen": {
       "launchShowDuration": 0
-    }
+    },
+    "App": {},
+    "Modals": {}
   },
   "cordova": {}
 }
