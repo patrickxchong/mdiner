@@ -87,9 +87,7 @@
       </form>
     </div>
     <div id="search" style="display: none;">
-      <a
-        onclick="(function() {history.pushState(null, null, '/');  document.getElementById('home').style.display = 'block'; document.getElementById('search').style.display = 'none'; document.querySelector('.lds-circle').style.display = 'none'; })();">Return
-        Home</a>
+      <a id="returnHome">Return Home</a>
       <br />
       <br />
       <div id="output">
@@ -108,8 +106,12 @@
     </p>
     <p>© 2018-2020 Patrick Chong Jin Hua</p>
   </div>
+  <script type="module" src="/static/lib/ionic.esm.js"></script>
+  <script nomodule src="/static/lib/ionic.js"></script>
+  <script src="/static/lib/capacitor.js"></script>
   <script src="/static/search.js"></script>
-  <script src="/static/home.js"></script>
+  <script src="/static/index.js"></script>
+  <script src="/static/cap.js"></script>
 </body>
 
 </html>
