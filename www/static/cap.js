@@ -55,19 +55,6 @@ async function showActions() {
   console.log('You selected', promptRet);
 }
 
-
-window.addEventListener('popstate', function (event) {
-  // Log the state data to the console
-  // console.log(window.history.state);
-  if (!window.location.search) { // if no query string, means at homepage
-    showHome();
-  } else {
-    search();
-  }
-});
-
-showAlert("Hello Friend", "Welcome to the MDiner!");
-
 App.addListener("backButton", async (data) => {
   if (!window.location.search) { // if no query string, means at homepage
     const result = await showConfirm('Confirm', 'Are you sure you would like to exit?')

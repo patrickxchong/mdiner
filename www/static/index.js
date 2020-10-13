@@ -8,6 +8,17 @@ function showHome() {
   document.querySelector('.lds-circle').style.display = 'none';
 }
 
+// small routing system
+window.addEventListener('popstate', function (event) {
+  // Log the state data to the console
+  // console.log(window.history.state);
+  if (!window.location.search) { // if no query string, means at homepage
+    showHome();
+  } else {
+    search();
+  }
+});
+
 document.getElementById("returnHome").addEventListener('click', () => {
   history.pushState({ page_id: 'home' }, null, '/');
   showHome();
