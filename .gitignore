@@ -16,3 +16,4 @@ static/workbox-sw*.js*
 
 ios
 android
+.vercel
