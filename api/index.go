@@ -1,39 +1,16 @@
 package api
 
 import (
-	"encoding/json"
-	"fmt"
-	"io/ioutil"
-	"log"
+	"go-diner/v0/internal/umich"
 	"net/http"
 )
 
 func RouteIndex(w http.ResponseWriter, r *http.Request) {
-	url := "http://api.studentlife.umich.edu/menu/xml2print.php?controller=print&view=json&location=Bursley%20Dining%20Hall"
-	resp, err := http.Get(url)
-	if err != nil {
-		panic(err)
-	}
-	defer resp.Body.Close()
-
-	fmt.Println("Response status:", resp.Status)
-
-	responseData, err := ioutil.ReadAll(resp.Body)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	var parsedJson map[string]interface{}
-
-	json.Unmarshal([]byte(responseData), &parsedJson)
-	fmt.Println(parsedJson["menu"])
-
-	stringifiedJson, err := json.Marshal(parsedJson)
-	if err != nil {
-		log.Fatal(err)
-	}
+	location, _ := umich.GetRandomDiningHall()
+	menu := umich.Menu{Location: location, Date: "2022-04-19"}
+	results := menu.ExecuteOrder("chicken")
 	w.Header().Set("Content-Type", "application/json")
-	w.Write(stringifiedJson)
+	w.Write([]byte(results))
 }
 
 /*
