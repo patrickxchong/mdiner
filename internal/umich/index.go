@@ -4,12 +4,14 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"go-diner/v0/internal/mongo"
 	"io/ioutil"
 	"log"
 	"math/rand"
 	"net/http"
 	"net/url"
 	"os"
+	"regexp"
 	"strings"
 )
 
@@ -68,11 +70,22 @@ func (m *Menu) ExecuteOrder(item string) string {
 	if m.Location == "" || m.Date == "" {
 		log.Fatal("Menu Location and Date must be set.")
 	}
+
 	if m.Filename != "" {
 		// "./internal/umich/menu_demo.json"
 		m.GetMenuByFile(m.Filename)
 	} else {
-		m.GetMenuByUrl(m.BuildApiUrl())
+		removeWhitespaceRegex := regexp.MustCompile(`\s`)
+		id := m.Date + "," + removeWhitespaceRegex.ReplaceAllString(m.Location, "")
+		// alternative that is less efficient -> id := strings.Join(strings.Fields(m.Location), "")
+
+		meals, err := mongo.GetMenuById(id)
+		if err != nil {
+			fmt.Println("GetMenuByUrl")
+			meals = m.GetMenuByUrl(m.BuildApiUrl())
+			mongo.AddMenu(id, meals)
+		}
+		m.meals = meals
 	}
 	results := m.FilterMenu(item)
 	return results
@@ -83,12 +96,10 @@ func (m *Menu) GetMenuByFile(filename string) string {
 	if err != nil {
 		log.Fatal(err)
 	} else {
-		fmt.Println("Successfully opened menu_demo.json")
+		fmt.Printf("Successfully opened %v\n", filename)
 	}
-	// defer the closing of our jsonFile so that we can parse it later on
 	defer jsonFile.Close()
 
-	// read our opened jsonFile as a byte array.
 	byteValue, _ := ioutil.ReadAll(jsonFile)
 	m.meals = string(byteValue[:])
 	return m.meals
@@ -108,6 +119,7 @@ func (m *Menu) BuildPageUrl() string {
 
 func (m *Menu) GetMenuByUrl(url string) string {
 	if url == "" {
+		// default for testing
 		url = "https://api.studentlife.umich.edu/menu/xml2print.php?controller=print&view=json&location=Bursley%20Dining%20Hall"
 	}
 	resp, err := http.Get(url)
@@ -116,15 +128,13 @@ func (m *Menu) GetMenuByUrl(url string) string {
 	}
 	defer resp.Body.Close()
 
-	// fmt.Println("Response status:", resp.Status)
-
 	responseData, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	m.meals = string(responseData[:])
-	return m.meals
+	meals := string(responseData[:])
+	return meals
 }
 
 func (m *Menu) FilterMenu(foodQuery string) string {
@@ -171,10 +181,8 @@ func (m *Menu) FilterMenu(foodQuery string) string {
 
 			}
 		}
-
 	}
 
-	// fmt.Println(results)
 	stringifiedJson, err := json.Marshal(results)
 	if err != nil {
 		log.Fatal(err)
