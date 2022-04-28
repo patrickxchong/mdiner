@@ -25,7 +25,6 @@ func respondStatusOK(w http.ResponseWriter, jsonString string) {
 	w.WriteHeader(http.StatusOK)
 	w.Header().Set("Content-Type", "application/json")
 	w.Write([]byte(jsonString))
-
 }
 
 func RouteMenu(w http.ResponseWriter, r *http.Request) {

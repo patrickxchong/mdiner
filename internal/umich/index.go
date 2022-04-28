@@ -49,23 +49,6 @@ func GetRandomDiningHall() (string, error) {
 	return GetDiningHall(i)
 }
 
-type Result struct {
-	Url      string   `json:"url"`
-	Date     string   `json:"date"`
-	Location string   `json:"location"`
-	Traits   []string `json:"traits"`
-	Meal     string   `json:"meal"`
-	Name     string   `json:"name"`
-}
-
-// should have constructor function like NewMenu?
-type Menu struct {
-	Location string
-	Date     string
-	Filename string
-	meals    string
-}
-
 func (m *Menu) ExecuteOrder(item string) string {
 	if m.Location == "" || m.Date == "" {
 		log.Fatal("Menu Location and Date must be set.")
@@ -77,13 +60,14 @@ func (m *Menu) ExecuteOrder(item string) string {
 	} else {
 		removeWhitespaceRegex := regexp.MustCompile(`\s`)
 		id := m.Date + "," + removeWhitespaceRegex.ReplaceAllString(m.Location, "")
-		// alternative that is less efficient -> id := strings.Join(strings.Fields(m.Location), "")
+		// alternative to remove whitespace that is less efficient -> id := strings.Join(strings.Fields(m.Location), "")
 
+		mongo.Connect()
+		defer mongo.Disconnect()
 		meals, err := mongo.GetMenuById(id)
 		if err != nil {
-			fmt.Println("GetMenuByUrl")
 			meals = m.GetMenuByUrl(m.BuildApiUrl())
-			mongo.AddMenu(id, meals)
+			mongo.CreateMenu(id, meals)
 		}
 		m.meals = meals
 	}

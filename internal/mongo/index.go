@@ -14,49 +14,6 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
-type Menu struct {
-	Id        string              `bson:"id,omitempty"`
-	Meals     string              `bson:"meals,omitempty"`
-	CreatedAt primitive.Timestamp `bson:"createdAt,omitempty"`
-	UpdatedAt primitive.Timestamp `bson:"updatedAt,omitempty"`
-}
-
-var menuCollection *mongo.Collection
-var timeout10s context.Context
-
-func init() {
-	timeout10s, cancel := context.WithTimeout(context.Background(), 10*time.Second)
-	defer cancel()
-
-	err := godotenv.Load()
-	if err != nil {
-		// print error, but don't crash
-		fmt.Println(err)
-	}
-	connectionString := os.Getenv("MDINER_MONGO_CONNECTION_STRING")
-
-	client, err := mongo.NewClient(options.Client().ApplyURI(connectionString))
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	err = client.Connect(timeout10s)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	// Check the connection
-	err = client.Ping(timeout10s, nil)
-
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	menuCollection = client.Database("mdiner").Collection("menu")
-	// postCollection = client.Database("blog").Collection("posts")
-
-}
-
 // Design with old mongo package (for reference)
 // https://github.com/eamonnmcevoy/go_rest_api/tree/master/pkg/mongo
 
@@ -64,13 +21,49 @@ func init() {
 // https://github.com/schadokar/go-to-do-app/blob/main/go-server/middleware/middleware.go
 // https://dev.to/hackmamba/build-a-rest-api-with-golang-and-mongodb-fiber-version-4la0
 
-func AddMenu(id string, meals string) {
+var client *mongo.Client
+var menuCollection *mongo.Collection
+var timeout10s context.Context
 
-	menu := Menu{
-		id,
-		meals,
-		primitive.Timestamp{T: uint32(time.Now().Unix())},
-		primitive.Timestamp{T: uint32(time.Now().Unix())},
+func init() {
+	godotenv.Load()
+	connectionString := os.Getenv("MDINER_MONGO_CONNECTION_STRING")
+
+	newClient, err := mongo.NewClient(options.Client().ApplyURI(connectionString))
+	client = newClient
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	menuCollection = client.Database("mdiner").Collection("menu")
+}
+
+func Connect() {
+	timeout10s, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	defer cancel()
+
+	err := client.Connect(timeout10s)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// Check the connection - commented out to reduce latency
+	// err = client.Ping(timeout10s, nil)
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
+}
+
+func Disconnect() {
+	client.Disconnect(timeout10s)
+}
+
+func CreateMenu(id string, meals string) {
+	menu := MenuCache{
+		Id:        id,
+		Meals:     meals,
+		CreatedAt: primitive.Timestamp{T: uint32(time.Now().Unix())},
+		UpdatedAt: primitive.Timestamp{T: uint32(time.Now().Unix())},
 	}
 
 	_, insertErr := menuCollection.InsertOne(timeout10s, menu)
@@ -87,8 +80,8 @@ func GetMenuById(id string) (string, error) {
 	return menu.Meals, nil
 }
 
-func GetMenu(filter interface{}) (*Menu, error) {
-	var menu Menu
+func GetMenu(filter interface{}) (*MenuCache, error) {
+	var menu MenuCache
 	err := menuCollection.FindOne(timeout10s, filter).Decode(&menu)
 	if err != nil {
 		// ErrNoDocuments means that the filter did not match any documents in the collection
@@ -108,7 +101,7 @@ func GetMenus(id string) {
 	}
 	defer cur.Close(timeout10s)
 
-	var posts []Menu
+	var posts []MenuCache
 	if err := cur.All(timeout10s, &posts); err != nil {
 		panic(err)
 	}
