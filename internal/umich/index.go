@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"go-diner/v0/internal/mongo"
+	"go-diner/v0/internal/mongodb"
 	"io/ioutil"
 	"log"
 	"math/rand"
@@ -62,12 +62,13 @@ func (m *Menu) ExecuteOrder(item string) string {
 		id := m.Date + "," + removeWhitespaceRegex.ReplaceAllString(m.Location, "")
 		// alternative to remove whitespace that is less efficient -> id := strings.Join(strings.Fields(m.Location), "")
 
-		mongo.Connect()
-		defer mongo.Disconnect()
-		meals, err := mongo.GetMenuById(id)
+		mongoClient := mongodb.NewClient()
+		mongoClient.Connect()
+		defer mongoClient.Disconnect()
+		meals, err := mongoClient.GetMenuById(id)
 		if err != nil {
 			meals = m.GetMenuByUrl(m.BuildApiUrl())
-			mongo.CreateMenu(id, meals)
+			mongoClient.CreateMenu(id, meals)
 		}
 		m.meals = meals
 	}
@@ -125,6 +126,7 @@ func (m *Menu) FilterMenu(foodQuery string) string {
 	results := []Result{}
 	var parsedJson map[string]interface{}
 
+	// Unable to Unmarshal to a struct because the json structure is inconsistent depending on the values present
 	json.Unmarshal([]byte(m.meals), &parsedJson)
 
 	menuMap := parsedJson["menu"].(map[string]interface{})

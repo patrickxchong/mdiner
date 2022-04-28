@@ -1,4 +1,4 @@
-package mongo
+package mongodb
 
 import (
 	"context"
@@ -21,44 +21,45 @@ import (
 // https://github.com/schadokar/go-to-do-app/blob/main/go-server/middleware/middleware.go
 // https://dev.to/hackmamba/build-a-rest-api-with-golang-and-mongodb-fiber-version-4la0
 
-var client *mongo.Client
-var menuCollection *mongo.Collection
-var timeout10s context.Context
+var ctxBackground context.Context = context.Background()
 
 func init() {
 	godotenv.Load()
-	connectionString := os.Getenv("MDINER_MONGO_CONNECTION_STRING")
-
-	newClient, err := mongo.NewClient(options.Client().ApplyURI(connectionString))
-	client = newClient
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	menuCollection = client.Database("mdiner").Collection("menu")
 }
 
-func Connect() {
-	timeout10s, cancel := context.WithTimeout(context.Background(), 10*time.Second)
-	defer cancel()
+func NewClient() MongoClient {
+	var mongoClient MongoClient
+	// timeout10s, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	// defer cancel()
 
-	err := client.Connect(timeout10s)
+	connectionString := os.Getenv("MDINER_MONGO_CONNECTION_STRING")
+	newClient, err := mongo.NewClient(options.Client().ApplyURI(connectionString))
+	if err != nil {
+		log.Fatal(err)
+	}
+	mongoClient.client = newClient
+	return mongoClient
+}
+
+func (mongoClient *MongoClient) Connect() {
+	err := mongoClient.client.Connect(ctxBackground)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	// Check the connection - commented out to reduce latency
-	// err = client.Ping(timeout10s, nil)
+	// Check the connection - commented out to reduce latency and it's not required (?)
+	// err = client.Ping(ctxBackground, nil)
 	// if err != nil {
 	// 	log.Fatal(err)
 	// }
+	mongoClient.menuCollection = mongoClient.client.Database("mdiner").Collection("menu")
 }
 
-func Disconnect() {
-	client.Disconnect(timeout10s)
+func (mongoClient *MongoClient) Disconnect() {
+	mongoClient.client.Disconnect(ctxBackground)
 }
 
-func CreateMenu(id string, meals string) {
+func (mongoClient *MongoClient) CreateMenu(id string, meals string) {
 	menu := MenuCache{
 		Id:        id,
 		Meals:     meals,
@@ -66,23 +67,23 @@ func CreateMenu(id string, meals string) {
 		UpdatedAt: primitive.Timestamp{T: uint32(time.Now().Unix())},
 	}
 
-	_, insertErr := menuCollection.InsertOne(timeout10s, menu)
+	_, insertErr := mongoClient.menuCollection.InsertOne(ctxBackground, menu)
 	if insertErr != nil {
 		log.Fatal(insertErr)
 	}
 }
 
-func GetMenuById(id string) (string, error) {
-	menu, err := GetMenu(bson.D{primitive.E{Key: "id", Value: id}})
+func (mongoClient *MongoClient) GetMenuById(id string) (string, error) {
+	menu, err := mongoClient.GetMenu(bson.D{primitive.E{Key: "id", Value: id}})
 	if err != nil {
 		return "", err
 	}
 	return menu.Meals, nil
 }
 
-func GetMenu(filter interface{}) (*MenuCache, error) {
+func (mongoClient *MongoClient) GetMenu(filter interface{}) (*MenuCache, error) {
 	var menu MenuCache
-	err := menuCollection.FindOne(timeout10s, filter).Decode(&menu)
+	err := mongoClient.menuCollection.FindOne(ctxBackground, filter).Decode(&menu)
 	if err != nil {
 		// ErrNoDocuments means that the filter did not match any documents in the collection
 		if err == mongo.ErrNoDocuments {
@@ -93,16 +94,16 @@ func GetMenu(filter interface{}) (*MenuCache, error) {
 	return &menu, err
 }
 
-func GetMenus(id string) {
-	cur, currErr := menuCollection.Find(timeout10s, bson.D{})
+func (mongoClient *MongoClient) GetMenus(id string) {
+	cur, currErr := mongoClient.menuCollection.Find(ctxBackground, bson.D{})
 
 	if currErr != nil {
 		panic(currErr)
 	}
-	defer cur.Close(timeout10s)
+	defer cur.Close(ctxBackground)
 
 	var posts []MenuCache
-	if err := cur.All(timeout10s, &posts); err != nil {
+	if err := cur.All(ctxBackground, &posts); err != nil {
 		panic(err)
 	}
 	fmt.Println(posts)

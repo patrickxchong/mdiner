@@ -2,5 +2,5 @@
 
 Main files
 - /api/menu/index.go
-- /internal/mongo/
 - /internal/umich/
+- /internal/mongodb/
