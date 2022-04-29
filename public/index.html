@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>The MDiner</title>
+  <meta name="description"
+    content="A simple app that tells you when and where the dining hall serves what you would like!" />
+  <meta property="og:image"
+    content="https://www.patrickxchong.com/assets/images/uploads/MDiner.png" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="shortcut icon" href="/static/favicon.png" />
+  <link rel="stylesheet" type="text/css" href="/static/index.css" />
+  <link rel="stylesheet" type="text/css" href="/static/fonts.css" />
+  <style>
+    .lds-circle {
+      display: inline-block;
+      width: 60px;
+      height: 60px;
+      padding: 6px;
+      border-radius: 50%;
+      background: #fff;
+      animation: lds-circle 2.4s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+      margin-bottom: 3vh;
+    }
+
+    .lds-circle img {
+      width: 50px;
+      height: 50px;
+    }
+
+    @keyframes lds-circle {
+
+      0%,
+      100% {
+        animation-timing-function: cubic-bezier(0.5, 0, 1, 0.5);
+      }
+
+      0% {
+        transform: rotateY(0deg);
+      }
+
+      50% {
+        transform: rotateY(1800deg);
+        animation-timing-function: cubic-bezier(0, 0.5, 0.5, 1);
+      }
+
+      100% {
+        transform: rotateY(3600deg);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <h1>
+      The
+      <div id="M">M</div>
+      Diner
+    </h1>
+    <div class="lds-circle" style="display: none;"><img
+        src="/static/Spoon-fork.png" /></div>
+    <div id="home" style="display: block;">
+      <p>What do you feel like eating?</p>
+      <form id="food-form" autocomplete="off">
+        <div class="food_input">
+          <p>I want</p>
+          <div class="autocomplete">
+            <input type="text" id="food_input" name="search"
+              value="Chocolate Glazed Donuts" />
+          </div>
+          <i class="far fa-times-circle"
+            onclick="(function() { document.getElementById('food_input').value = ''; }) (); return false;"></i>
+        </div>
+        <div class="date">
+          <p>from <input type="date" id="start_input" name="start" /></p>
+          <p>
+            to
+            <input type="date" id="end_input" name="end" />
+          </p>
+        </div>
+        <button type="submit" id="submit_input">
+          <i class="far fa-check-circle"></i>
+        </button>
+      </form>
+    </div>
+    <div id="search" style="display: none;">
+      <a id="returnHome">Return Home</a>
+      <br />
+      <br />
+      <div id="output">
+        <div class="food-wrapper"></div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <p>
+      <a href="https://patrickxchong.com" target="_blank"
+        rel="noopener noreferrer">About
+      </a>
+      | <a href="https://patrickxchong.com/contact" target="_blank"
+        rel="noopener noreferrer">Contact
+      </a>
+    </p>
+    <p>© 2018-2022 Patrick Chong Jin Hua</p>
+  </div>
+  <script src="/static/lib/capacitor.js"></script>
+  <script src="/static/search.js"></script>
+  <script src="/static/index.js"></script>
+  <script src="/static/cap.js"></script>
+</body>
+
+</html>
